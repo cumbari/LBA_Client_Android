@@ -1,2 +1,2 @@
 # Moblyo_android
-Android version of cumbari_ios
+Android min version 4.3  of cumbari_ios
