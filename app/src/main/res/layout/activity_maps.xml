@@ -1,0 +1,80 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    >
+
+
+    <LinearLayout
+        android:id="@+id/layoutMapButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:weightSum="1"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".33"
+            android:text="@string/typeHybrid"
+            android:textSize="@dimen/normal_text"
+            android:gravity="center"
+            android:visibility="visible"
+            android:padding="10dip"
+            android:layout_margin="2dip"
+            android:background="@drawable/selector_detailed_coupon_button_bg"
+            android:textColor="@color/white"
+            android:id="@+id/hybridmap"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/typeSatellite"
+            android:layout_weight=".34"
+            android:gravity="center"
+            android:padding="10dip"
+            android:layout_marginTop="2dip"
+            android:layout_marginBottom="2dip"
+            android:textSize="@dimen/normal_text"
+            android:background="@drawable/selector_detailed_coupon_button_bg"
+            android:textColor="@color/white"
+            android:visibility="visible"
+            android:id="@+id/satellitemap"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/typeStandard"
+            android:layout_weight=".33"
+            android:gravity="center"
+            android:padding="10dip"
+            android:layout_marginTop="2dip"
+            android:layout_marginBottom="2dip"
+            android:layout_marginLeft="2dip"
+            android:layout_marginRight="4dip"
+
+            android:textSize="@dimen/normal_text"
+            android:background="@drawable/selector_detailed_coupon_button_bg"
+            android:textColor="@color/white"
+            android:visibility="visible"
+            android:id="@+id/normalmap"
+
+            />
+    </LinearLayout>
+
+    <fragment
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_above="@id/layoutMapButtons"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+
+</RelativeLayout>

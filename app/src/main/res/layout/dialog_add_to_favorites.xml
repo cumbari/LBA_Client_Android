@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dip"
+    android:background="@android:color/darker_gray"
+    >
+
+        <TextView
+            android:id="@+id/add_to_fav_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/message_add_to_Fav"
+           android:gravity="center_horizontal"
+            android:textSize="@dimen/large_text"
+            android:textColor="@color/white"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="10dip"
+
+            />
+
+    <Button
+        android:id="@+id/add_to_fav_done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_to_fav_message"
+        android:text="@string/message_add_to_Fav_done"
+        android:background="@drawable/green_button"
+        android:textSize="@dimen/normal_text"
+        android:textColor="@color/white"
+        />
+
+    <Button
+        android:id="@+id/add_to_fav_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_to_fav_done"
+        android:text="@string/alert_cancel"
+        android:layout_marginTop="10dip"
+        android:background="@drawable/cancel_background"
+        android:textSize="@dimen/normal_text"
+        android:textColor="@color/white"
+        android:layout_marginBottom="5dip"
+        />
+
+
+</RelativeLayout>

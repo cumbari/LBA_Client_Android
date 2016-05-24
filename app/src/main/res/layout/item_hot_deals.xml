@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dip"
+        >
+
+    <ImageView
+        android:id="@+id/delete_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dip"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:src="@android:drawable/ic_menu_delete"
+        android:visibility="gone"/>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_toRightOf="@+id/delete_favorite"
+        android:layout_margin="3dip"
+        android:elevation="10dip"
+        >
+    <RelativeLayout  android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="3dip"
+        >
+
+    <ImageView
+        android:id="@+id/hot_deals_coupon_image"
+        android:layout_width="50dip"
+        android:layout_height="50dip"
+        android:padding="5dip"
+        android:layout_centerVertical="true"
+        android:src="@drawable/hotdeals"/>
+
+    <LinearLayout
+        android:id="@+id/distance_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:padding="5dip"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/hot_deals_offer_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7 Km"
+            android:singleLine="true"
+            android:textSize="@dimen/medium_text"
+            android:layout_gravity="center"
+            android:textColor="@color/subTitleColor"
+            />
+
+        <ImageView
+            android:id="@+id/hot_deals_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+          android:src="@drawable/arrow"
+            android:padding="5dip"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/hot_deals_coupon_image"
+        android:layout_toLeftOf="@+id/distance_layout"
+        android:orientation="vertical"
+        android:padding="5dip"
+        >
+
+        <TextView
+            android:id="@+id/hot_deals_offer_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Offer Title"
+            android:singleLine="true"
+            android:textSize="@dimen/normal_text"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/hot_deals_offer_slogan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/medium_text"
+            android:maxLines="2"
+            android:textColor="@color/subTitleColor"
+            android:text="Offer Slogan"/>
+
+    </LinearLayout>
+
+        </RelativeLayout>
+
+</android.support.v7.widget.CardView>
+</RelativeLayout>

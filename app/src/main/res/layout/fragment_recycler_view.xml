@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="3dip"
+    >
+
+    <SearchView
+        android:id="@+id/data_searchview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#dcdcdc"
+        android:queryHint="@string/search"
+        android:layout_marginBottom="5dip"
+        />
+
+    <ProgressBar
+        android:id="@+id/data_load_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/data_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/data_searchview"
+        android:layout_above="@+id/data_load_progress"
+        app:layoutManager="LinearLayoutManager"
+        android:fastScrollEnabled="true" >
+    </android.support.v7.widget.RecyclerView>
+
+
+</RelativeLayout>

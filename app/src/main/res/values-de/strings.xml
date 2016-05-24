@@ -1,0 +1,159 @@
+<resources>
+    <string name="app_name">MOblYO</string>
+
+    <string name="alert_title">Oops!</string>
+    <string name="alert_ok">OK</string>
+    <string name="alert_cancel">Cancel</string>
+
+    <string name="message_no_connection">schwacher/kein Internet Empfang. MOblYO Service zur Zeit für Sie nicht verfügbar</string>
+    <string name="message_no_gps_or_wifi">Sorry, location is not determined. Please enable location providers</string>
+    <string name="message_open_gps">GPS is disabled in your device. Would you like to enable it?</string>
+
+    <string name="alert_title_error">Fehler</string>
+    <string name="message_category_filter">Verbindungsfehler oder kein Coupon in dieser Kategorie</string>
+    <string name="message_brand_filter">Verbindungsfehler oder diese Marke hat keinen Coupon</string>
+
+    <string name="progress_title">Syncing Coupons...</string>
+    <string name="progress_message">Please wait...</string>
+
+    <string name="title_hot_deals">Hot Deals</string>
+    <string name="title_categories">Kategorien</string>
+    <string name="title_brands">Marken</string>
+    <string name="title_favorities">Merkliste</string>
+    <string name="title_more">Mehr</string>
+
+    <string name="search">Search</string>
+
+
+    <string name="more_position">Position</string>
+    <string name="current_position">Derzeitiger Standort</string>
+    <string name="new_position">Neue Position</string>
+
+    <string name="more_setting">Einstellungen</string>
+    <string name="more_feedback">Feedback</string>
+    <string name="more_about_cumbari">Über MOblYO</string>
+
+    <string name="sponsored">sponsored</string>
+    <string name="unSponsored">Unsponsored</string>
+
+    <string name="more_deals">Weitere Angebote</string>
+    <string name="favorities">Merkliste</string>
+    <string name="more_info">Mehr Info</string>
+
+
+    <string name="language">Sprache</string>
+    <string name="unit">Einheit</string>
+    <string name="offers_in_list">Angebote auflisten</string>
+    <string name="range">Reichweite</string>
+
+    <string name="edit_favorities_toast">Tap on the trash icon to delete your favorities. Once deleted you cannot restore them!</string>
+    <string name="no_mail_configured">You do not have your mail configured.</string>
+
+
+    <string name="detailed_coupon_activation_info">You have more than 10 min to\n use the deal after activation.\n We recommend you to\n activate the deal when you are\nabout to pay.</string>
+    <string name="message_add_to_Fav">Do you want to add this\n deal to your Favorites!\n</string>
+    <string name="message_add_to_Fav_done">Add to Favorites</string>
+    <string name="message_activate_deal_done">Activate deal</string>
+
+
+    <string name="more_info_title">Detaillierte Produktbeschreibung</string>
+    <string name="more_info_title_no">keine Produktbeschreibung</string>
+
+    <string name="more_info_store_information">Firmeninformation</string>
+    <string name="more_info_address">Adresse</string>
+    <string name="more_info_phone">Telefonnummer</string>
+    <string name="more_info_email">Email</string>
+    <string name="more_info_company_home_page">Homepage der Firma</string>
+
+    <string name="valid">Gültig: </string>
+    <string name="valid_until">Gültig bis </string>
+
+    <string name="monday_c">MON</string>
+    <string name="tuesday_c">TUE</string>
+    <string name="wednesday_c">WED</string>
+    <string name="thursday_c">THU</string>
+    <string name="friday_c">FRI</string>
+    <string name="saturday_c">SAT</string>
+    <string name="sunday_c">SUN</string>
+    <string name="monday_friday_c">MON_TO_FRI</string>
+    <string name="all_week_c">ALL_WEEK</string>
+
+    <string name="monday_s">Mo</string>
+    <string name="tuesday_s">Di</string>
+    <string name="wednesday_s">Mi</string>
+    <string name="thursday_s">Do</string>
+    <string name="friday_s">Fr</string>
+    <string name="saturday_s">Sa</string>
+    <string name="sunday_s">So</string>
+    <string name="monday_friday_s">Mo – Fr</string>
+    <string name="all_week_s">diese Woche</string>
+
+    <string name="saturday_validity">Saturday</string>
+    <string name="sunday_validity">Sunday</string>
+
+    <string name="already_added_title">schon hinzugefügt</string>
+    <string name="already_added_message">Bereits zur Merkliste hinzugefügt</string>
+
+    <string name="use_deal">Angebot einlösen</string>
+    <string name="too_far_title">Angebot nicht verfügbar</string>
+    <string name="too_far_message">Sie sind zu weit vom Geschäft entfernt</string>
+    <string name="offer_cannot_be_used">Angebot nicht verfügbar</string>
+
+    <string name="you_can_use_this_coupon">You can use this coupon on</string>
+    <string name="only">only</string>
+
+    <string name="ask_the_staff_message">Ask the staff to enable\n the deal at the time of purchase.\nEnabling the deal on their own\nconsidered it as used up</string>
+    <string name="confirm_activate_message">You have 10 min to \nuse the deal after activation.\nWe recommend you to\nactivate the deal when you are\nabout to pay.</string>
+    <string name="slide_to_use_deal">Wischen um Angebot einzulösen</string>
+
+    <string name="time_remaining">Restzeit</string>
+    <string name="min">min</string>
+
+    <string name="coupon_already_used">Coupon already used</string>
+    <string name="coupon_expired_in">Coupon expired in</string>
+
+    <string name="use_coupon_error_title">Use Coupon Error</string>
+    <string name="use_coupon_error_message">Coupon can\'t be used</string>
+    <string name="use_deal_within">Use deal within</string>
+    <string name="offer_expires_in">This offer will expire in </string>
+
+    <string name="distance_beyond_limit_title">Entfernung außer Reichweite</string>
+    <string name="distance_beyond_limit_message">Wegweiser nicht verfügbar</string>
+
+    <string name="swipe_to_confirm">>> SWIPE TO CONFIRM >></string>
+
+    <string name="title_activity_maps">Karte</string>
+    <string name="typeStandard">Standard</string>
+    <string name="typeHybrid">Hybrid</string>
+    <string name="typeSatellite">Satellit</string>
+
+    <string name="meter">Meter</string>
+    <string name="mile">Mile</string>
+
+    <string name="english">English</string>
+    <string name="swedish">Svenska</string>
+    <string name="german">German</string>
+
+    <string name="value_selected">Value</string>
+    <string name="reset">Reset</string>
+
+    <string name="drag_to_move">Ziehen um Pin zu bewegen</string>
+    <string name="enter_address">Adresse eingeben oder auf Karte tippen</string>
+
+    <string name="setting_button_tap">Lange Presse Marker und Ziehen</string>
+    <string name="settings_button_search">Position ändern durch Suchen</string>
+    <string name="settings_change_position">Position ändern</string>
+    <string name="search_query_map">Enter Address or Tap on Map</string>
+
+    <string name="no_data">Verbindungsfehler oder Coupon nicht existent</string>
+    <string name="no_add_google_coupon_title">Kann nicht hinzugefügt werden</string>
+    <string name="no_add_google_coupon_message">Du kannst keine Google Produkte zu Favoriten hinzufügen</string>
+
+
+    <string name="not_logged_in">Nicht eingeloggt</string>
+    <string name="post_deal">Deal posten</string>
+    <string name="posting_data">Daten werden an Facebook übermittelt</string>
+    <string name="logged_out_text">Ausloggen</string>
+    <string name="not_connected_to_facebook">Nicht mit Facebook verbunden</string>
+    
+</resources>

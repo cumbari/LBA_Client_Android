@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/coupon_background"
+    android:id="@+id/pincode_screen_main_layout"
+    >
+
+    <TextView
+        android:id="@+id/pincode_time_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_margin="20dip"
+        android:textSize="@dimen/very_large_text"
+        android:textColor="@color/white"
+        android:layout_marginBottom="15dip"
+        />
+
+        <TextView
+            android:id="@+id/pincode"
+            android:layout_width="match_parent"
+            android:layout_height="150dip"
+            android:layout_margin="20dip"
+            android:background="@color/background_material_light"
+            android:layout_below="@+id/pincode_time_message"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/very_large_text"
+            android:textColor="@color/black"
+            android:layout_marginBottom="30dip"
+            android:text="1234"
+            />
+
+    <TextView
+        android:id="@+id/pincode_coupon_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_below="@+id/pincode"
+        android:textSize="@dimen/very_large_text"
+        android:textColor="@color/white"
+        />
+
+    <TextView
+        android:id="@+id/pincode_coupon_street"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:layout_below="@+id/pincode_coupon_title"
+        android:textSize="@dimen/large_text"
+        android:textColor="@color/white"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dip"
+    android:background="@android:color/darker_gray"
+    >
+
+        <TextView
+            android:id="@+id/activate_deal_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/detailed_coupon_activation_info"
+           android:gravity="center_horizontal"
+            android:textSize="@dimen/normal_text"
+            android:textColor="@color/white"
+            android:layout_marginBottom="15dip"
+            />
+
+    <Button
+        android:id="@+id/activate_deal_done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activate_deal_message"
+        android:text="@string/message_activate_deal_done"
+        android:textColor="@color/white"
+        android:background="@drawable/green_button"
+        android:textSize="@dimen/normal_text"
+        />
+
+    <com.shephertz.cumbari.utils.SwipeButton
+        android:id="@+id/my_swipe_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activate_deal_message"
+        android:background="@drawable/green_button"
+        android:textColor="@color/white"
+        android:visibility="invisible"
+        />
+
+    <Button
+        android:id="@+id/activate_deal_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activate_deal_done"
+        android:text="@string/alert_cancel"
+        android:layout_marginTop="10dip"
+        android:background="@drawable/cancel_background"
+        android:textSize="@dimen/normal_text"
+        android:textColor="@color/white"
+        android:layout_marginBottom="5dip"
+        />
+
+
+</RelativeLayout>

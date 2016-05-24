@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/coupon_background"
+    >
+
+    <include
+        android:id="@+id/detail_coupon_top_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/header_navigation_bar"
+        android:layout_alignParentTop="true"
+        />
+
+    <RelativeLayout
+        android:id="@+id/detail_coupon_bottom_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/darker_gray"
+        >
+        <ImageView
+            android:id="@+id/detail_coupon_facebook"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/fb"
+            android:layout_marginTop="5dip"
+            android:layout_marginLeft="5dip"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:layout_toRightOf="@+id/detail_coupon_facebook"
+            android:layout_marginRight="5dip"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="5dip"
+            >
+
+            <TextView
+                android:id="@+id/detail_coupon_more_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dip"
+                android:paddingLeft="3dip"
+                android:paddingRight="3dip"
+                android:paddingTop="10dip"
+                android:paddingBottom="10dip"
+                android:background="@drawable/selector_detailed_coupon_button_bg"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="@string/more_info"/>
+
+            <TextView
+                android:id="@+id/detail_coupon_fav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dip"
+                android:paddingLeft="3dip"
+                android:paddingRight="3dip"
+                android:paddingTop="10dip"
+                android:paddingBottom="10dip"
+                android:background="@drawable/selector_detailed_coupon_button_bg"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:text="@string/title_favorities"/>
+
+            <TextView
+                android:id="@+id/detail_coupon_more_deals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dip"
+                android:paddingLeft="3dip"
+                android:paddingRight="3dip"
+                android:paddingTop="10dip"
+                android:paddingBottom="10dip"
+                android:singleLine="true"
+                android:background="@drawable/selector_detailed_coupon_button_bg"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="@string/more_deals"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+    <include
+        android:id="@+id/detail_coupon_main_holder"
+        android:layout_below="@id/detail_coupon_top_header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dip"
+        android:layout_above="@+id/detail_coupon_bottom_rl"
+        layout="@layout/layout_detailed_coupon"
+        />
+
+    <include
+        android:id="@+id/detail_coupon_info_holder"
+        android:layout_below="@id/detail_coupon_top_header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dip"
+        android:layout_above="@+id/detail_coupon_bottom_rl"
+        layout="@layout/layout_detailed_coupon_more_info"
+
+        />
+
+    <include
+        android:id="@+id/detail_coupon_facebook_holder"
+        android:layout_below="@id/detail_coupon_top_header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dip"
+        android:layout_above="@+id/detail_coupon_bottom_rl"
+        layout="@layout/layout_detailed_coupon_facebook"
+
+        />
+
+</RelativeLayout>

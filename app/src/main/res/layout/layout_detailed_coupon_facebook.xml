@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+
+   <ImageView
+       android:id="@+id/facebook_coupon_image"
+       android:layout_width="300dip"
+       android:layout_height="168dip"
+       android:scaleType="fitCenter"
+        android:minHeight="168dip"
+       android:minWidth="300dip"
+       android:src="@drawable/no_image"
+       android:layout_marginTop="10dip"
+       android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_title"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:text="@string/logged_out_text"
+        android:textColor="@color/black"
+        android:background="@drawable/cancel_background"
+        />
+
+
+    <Button
+        android:id="@+id/facebook_post_deal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="10dip"
+        android:background="@drawable/green_button"
+        android:textColor="@color/white"
+        android:layout_above="@+id/logout_button"
+        android:text="@string/post_deal"/>
+
+
+    <TextView
+        android:id="@+id/facebook_coupon_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/very_large_text"
+        android:layout_marginTop="10dip"
+        android:textColor="@color/white"
+        android:layout_below="@+id/facebook_coupon_image"
+        />
+
+    <TextView
+        android:id="@+id/facebook_coupon_slogan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/facebook_coupon_title"
+        android:textSize="@dimen/large_text"
+        android:layout_marginTop="5dip"
+        android:textColor="@color/white"
+        android:maxLines="3"
+        />
+
+</RelativeLayout>

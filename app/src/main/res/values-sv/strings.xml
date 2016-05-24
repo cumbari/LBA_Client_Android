@@ -1,0 +1,156 @@
+<resources>
+    <string name="app_name">MOblYO</string>
+
+    <string name="alert_title">Oj då!</string>
+    <string name="alert_ok">OK</string>
+    <string name="alert_cancel">Annullera</string>
+
+    <string name="message_no_connection">Inget/svagt internet. Du kan inte använda MOblYO tjänster som idag</string>
+    <string name="message_no_gps_or_wifi">Tyvärr är platsen inte bestämd . Vänligen aktivera positionsgivare</string>
+    <string name="message_open_gps">GPS är inaktiverad i enheten . Vill du göra det ?</string>
+
+    <string name="alert_title_error">Fel</string>
+    <string name="message_category_filter">Fel med anslutning eller Det finns ingen kupong i denna kategori</string>
+    <string name="message_brand_filter">Fel med anslutning eller Det finns ingen kupong i den här helt</string>
+
+    <string name="progress_title">synkronisera kuponger...</string>
+    <string name="progress_message">Vänta...</string>
+
+    <string name="title_hot_deals">Hot Deals</string>
+    <string name="title_categories">Kategorier</string>
+    <string name="title_brands">Varumärken</string>
+    <string name="title_favorities">Favoriter</string>
+    <string name="title_more">Mer</string>
+
+    <string name="search">Sök</string>
+
+
+    <string name="more_position">Position</string>
+    <string name="current_position">Aktuell plats</string>
+    <string name="new_position">Ny Position</string>
+
+    <string name="more_setting">Inställningar</string>
+    <string name="more_feedback">Återkoppling</string>
+    <string name="more_about_cumbari">Om MOblYO</string>
+
+    <string name="sponsored">Sponsrad</string>
+    <string name="unSponsored">Unsponsored</string>
+
+    <string name="more_deals">Mer deal</string>
+    <string name="favorities">Favorit</string>
+    <string name="more_info">Mer info</string>
+
+
+    <string name="language">Språk</string>
+    <string name="unit">Enhet</string>
+    <string name="offers_in_list">Erbjudanden Lista</string>
+    <string name="range">Range</string>
+
+    <string name="edit_favorities_toast">Klicka på papperskorgen för att radera dina favorities . Raderade du inte kan återställa dem !</string>
+    <string name="no_mail_configured">Du behöver inte ha din mail konfigurerat.</string>
+
+
+    <string name="detailed_coupon_activation_info">Du har mer än 10 min till\n Använd affären efter aktivering.\n Vi rekommenderar att du\n aktivera affären när du är\nom att betala.</string>
+    <string name="message_add_to_Fav">Vill du lägga till den här\n hantera dina favoriter!\n</string>
+    <string name="message_add_to_Fav_done">Lägg till i favoriter</string>
+    <string name="message_activate_deal_done">Aktivera deal</string>
+
+
+    <string name="more_info_title">Detaljerad Produkt beskrivning</string>
+    <string name="more_info_title_no">Nej Detaljerad Produkt beskrivning</string>
+
+    <string name="more_info_store_information">Butiksinformation</string>
+    <string name="more_info_address">Adress</string>
+    <string name="more_info_phone">Telefonnummer</string>
+    <string name="more_info_email">E-post</string>
+    <string name="more_info_company_home_page">Företag Hemsida</string>
+
+    <string name="valid">Gäller: </string>
+    <string name="valid_until">Giltig till </string>
+
+    <string name="monday_c">MON</string>
+    <string name="tuesday_c">TUE</string>
+    <string name="wednesday_c">WED</string>
+    <string name="thursday_c">THU</string>
+    <string name="friday_c">FRI</string>
+    <string name="saturday_c">SAT</string>
+    <string name="sunday_c">SUN</string>
+    <string name="monday_friday_c">MON_TO_FRI</string>
+    <string name="all_week_c">ALL_WEEK</string>
+
+    <string name="monday_s">Mån</string>
+    <string name="tuesday_s">Tis</string>
+    <string name="wednesday_s">Ons</string>
+    <string name="thursday_s">Tors</string>
+    <string name="friday_s">Fre</string>
+    <string name="saturday_s">Lör</string>
+    <string name="sunday_s">Sön</string>
+    <string name="monday_friday_s">Mån till Fre</string>
+    <string name="all_week_s">Hela veckan</string>
+
+    <string name="saturday_validity">Saturday</string>
+    <string name="sunday_validity">Sunday</string>
+
+    <string name="already_added_title">Redan Tillagt</string>
+    <string name="already_added_message">Detta är redan lagt in favoriter</string>
+
+    <string name="use_deal">användning Deal</string>
+    <string name="too_far_title">Erbjudandet kan ej nyttjas</string>
+    <string name="too_far_message">Du befinner dig för långt ifrån försäljningsstället</string>
+    <string name="offer_cannot_be_used">Erbjudandet kan ej nyttjas</string>
+
+    <string name="you_can_use_this_coupon">Du kan använda denna kupong på</string>
+    <string name="only">endast</string>
+
+    <string name="ask_the_staff_message">Be personalen att göra det möjligt för\n affären vid köptillfället.\nAktivera affären på egen hand\n ansåg det vara förbrukad</string>
+    <string name="confirm_activate_message">Du har 10 minuter till \nAnvänd affären efter aktivering.\nVi rekommenderar att du \naktivera affären när du är\n om att betala.</string>
+    <string name="slide_to_use_deal">Skjut att använda Deal</string>
+
+    <string name="time_remaining">Resterande tid</string>
+    <string name="min">min</string>
+
+    <string name="coupon_already_used">Kupong som redan använts</string>
+    <string name="coupon_expired_in">Kupong löpte ut i</string>
+
+    <string name="use_coupon_error_title">Använd kupong Error</string>
+    <string name="use_coupon_error_message">Kupong kan inte användas</string>
+    <string name="use_deal_within">Använd affär inom</string>
+    <string name="offer_expires_in">Detta erbjudande löper ut i </string>
+
+    <string name="distance_beyond_limit_title">Avstånd Beyond Limit</string>
+    <string name="distance_beyond_limit_message">Du kan inte se karta vägbeskrivning</string>
+
+    <string name="swipe_to_confirm">>> Skjut för att använda Deal >></string>
+
+    <string name="title_activity_maps">Karta</string>
+    <string name="typeStandard">Standard</string>
+    <string name="typeHybrid">Hybrid</string>
+    <string name="typeSatellite">Satellite</string>
+
+    <string name="meter">Meter</string>
+    <string name="mile">Mile</string>
+
+    <string name="english">English</string>
+    <string name="swedish">Svenska</string>
+    <string name="german">German</string>
+
+    <string name="value_selected">Värde</string>
+    <string name="reset">Återställa</string>
+
+     <string name="setting_button_tap">Lång tryckning Marker och dra</string>
+    <string name="settings_button_search">Ändra position genom sökning</string>
+    <string name="settings_change_position">Ändra position</string>
+    <string name="search_query_map">Ange adress eller Klicka på kartan</string>
+
+    <string name="no_data">Fel med anslutning</string>
+    <string name="no_add_google_coupon_title">Kan inte läggas</string>
+    <string name="no_add_google_coupon_message">Du kan inte lägga Google-produkter till favoriter</string>
+
+
+    <string name="not_logged_in">Inte inloggad</string>
+    <string name="post_deal">Post Deal</string>
+    <string name="posting_data">Posting Data to facebook</string>
+    <string name="logged_out_text">logga ut!</string>
+    <string name="not_connected_to_facebook">Du har loggat ut !</string>
+
+</resources>

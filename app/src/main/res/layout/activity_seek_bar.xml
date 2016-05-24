@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/end_screen_main_layout"
+    android:background="@color/white"
+    >
+    <include
+        android:id="@+id/activity_navigation_bar"
+        layout="@layout/header_navigation_bar_activities"
+        />
+
+    <TextView
+        android:id="@+id/seek_bar_value_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dip"
+        android:textSize="@dimen/large_text"
+        android:layout_below="@+id/activity_navigation_bar"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="@string/value_selected"
+        />
+
+    <TextView
+        android:id="@+id/seek_bar_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/very_large_text"
+        android:layout_below="@+id/seek_bar_value_label"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text=""
+        />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/seek_bar_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="10dip"
+        android:layout_centerInParent="true"
+        android:elevation="10dip"
+        >
+    <SeekBar
+        android:id="@+id/seek_bar_changer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dip"
+        android:background="@drawable/progressbar"
+        />
+    </android.support.v7.widget.CardView>
+
+
+    <Button
+        android:id="@+id/reset_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:textSize="@dimen/large_text"
+        android:textColor="@color/white"
+        android:background="@drawable/detailed_normal"
+        android:layout_margin="10dip"
+        android:text="@string/reset"
+        />
+
+
+</RelativeLayout>

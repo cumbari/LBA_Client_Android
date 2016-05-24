@@ -1,0 +1,159 @@
+<resources>
+    <string name="app_name">MOblYO</string>
+
+    <string name="alert_title">Oops!</string>
+    <string name="alert_ok">OK</string>
+    <string name="alert_cancel">Cancel</string>
+
+    <string name="message_no_connection">No/Weak Internet access. You can not use the MOblYO service currently</string>
+    <string name="message_no_gps_or_wifi">Sorry, location is not determined. Please enable location providers</string>
+    <string name="message_open_gps">GPS is disabled in your device. Would you like to enable it?</string>
+
+    <string name="alert_title_error">Error</string>
+    <string name="message_category_filter">Error With Connection Or There is no Coupon in this category</string>
+    <string name="message_brand_filter">Error With Connection Or There is no Coupon in this brand</string>
+
+    <string name="progress_title">Syncing Coupons...</string>
+    <string name="progress_message">Please wait...</string>
+
+    <string name="title_hot_deals">Hot Deals</string>
+    <string name="title_categories">Categories</string>
+    <string name="title_brands">Brands</string>
+    <string name="title_favorities">Favorities</string>
+    <string name="title_more">More</string>
+
+    <string name="search">Search</string>
+
+
+    <string name="more_position">Position</string>
+    <string name="current_position">Current Location</string>
+    <string name="new_position">New Position</string>
+
+    <string name="more_setting">Setting</string>
+    <string name="more_feedback">Feedback</string>
+    <string name="more_about_cumbari">About MOblYO</string>
+
+    <string name="sponsored">Sponsored</string>
+    <string name="unSponsored">Unsponsored</string>
+
+    <string name="more_deals">More Deals</string>
+    <string name="favorities">Favorites</string>
+    <string name="more_info">More Info</string>
+
+
+    <string name="language">Language</string>
+    <string name="unit">Unit</string>
+    <string name="offers_in_list">Offers in list</string>
+    <string name="range">Range</string>
+
+    <string name="edit_favorities_toast">Tap on the trash icon to delete your favorities. Once deleted you cannot restore them!</string>
+    <string name="no_mail_configured">You do not have your mail configured.</string>
+
+
+    <string name="detailed_coupon_activation_info">You have more than 10 min to\n use the deal after activation.\n We recommend you to\n activate the deal when you are\nabout to pay.</string>
+    <string name="message_add_to_Fav">Do you want to add this\n deal to your Favorites!\n</string>
+    <string name="message_add_to_Fav_done">Add to Favorites</string>
+    <string name="message_activate_deal_done">Activate deal</string>
+
+
+    <string name="more_info_title">Detailed Product description</string>
+    <string name="more_info_title_no">No Detailed Product description</string>
+
+    <string name="more_info_store_information">Store Information</string>
+    <string name="more_info_address">Address</string>
+    <string name="more_info_phone">Phone Number</string>
+    <string name="more_info_email">Email</string>
+    <string name="more_info_company_home_page">Company Home Page</string>
+
+    <string name="valid">Valid: </string>
+    <string name="valid_until">Valid until </string>
+
+    <string name="monday_c">MON</string>
+    <string name="tuesday_c">TUE</string>
+    <string name="wednesday_c">WED</string>
+    <string name="thursday_c">THU</string>
+    <string name="friday_c">FRI</string>
+    <string name="saturday_c">SAT</string>
+    <string name="sunday_c">SUN</string>
+    <string name="monday_friday_c">MON_TO_FRI</string>
+    <string name="all_week_c">ALL_WEEK</string>
+
+    <string name="monday_s">Mon</string>
+    <string name="tuesday_s">Tue</string>
+    <string name="wednesday_s">Wed</string>
+    <string name="thursday_s">Thu</string>
+    <string name="friday_s">Fri</string>
+    <string name="saturday_s">Sat</string>
+    <string name="sunday_s">Sun</string>
+    <string name="monday_friday_s">Mon to Fri</string>
+    <string name="all_week_s">All week</string>
+
+    <string name="saturday_validity">Saturday</string>
+    <string name="sunday_validity">Sunday</string>
+
+    <string name="already_added_title">Already Added</string>
+    <string name="already_added_message">This is already added into Favorites</string>
+
+    <string name="use_deal">Use Deal</string>
+    <string name="too_far_title">Offer can\'t be used</string>
+    <string name="too_far_message">You are too far from the point of sale</string>
+    <string name="offer_cannot_be_used">Offer can\'t be used</string>
+
+    <string name="you_can_use_this_coupon">You can use this coupon on</string>
+    <string name="only">only</string>
+
+    <string name="ask_the_staff_message">Ask the staff to enable\n the deal at the time of purchase.\nEnabling the deal on their own\nconsidered it as used up</string>
+    <string name="confirm_activate_message">You have 10 min to \nuse the deal after activation.\nWe recommend you to\nactivate the deal when you are\nabout to pay.</string>
+    <string name="slide_to_use_deal">Slide To Use Deal</string>
+
+    <string name="time_remaining">Time Remaining</string>
+    <string name="min">min</string>
+
+    <string name="coupon_already_used">Coupon already used</string>
+    <string name="coupon_expired_in">Coupon expired in</string>
+
+    <string name="use_coupon_error_title">Use Coupon Error</string>
+    <string name="use_coupon_error_message">Coupon can\'t be used</string>
+    <string name="use_deal_within">Use deal within</string>
+    <string name="offer_expires_in">This offer will expire in </string>
+
+    <string name="distance_beyond_limit_title">Distance Beyond Limit</string>
+    <string name="distance_beyond_limit_message">You can\'t see map directions</string>
+
+    <string name="swipe_to_confirm">>> SWIPE TO CONFIRM >></string>
+
+    <string name="title_activity_maps">Map</string>
+    <string name="typeStandard">Standard</string>
+    <string name="typeHybrid">Hybrid</string>
+    <string name="typeSatellite">Satellite</string>
+
+    <string name="meter">Meter</string>
+    <string name="mile">Mile</string>
+
+    <string name="english">English</string>
+    <string name="swedish">Svenska</string>
+    <string name="german">German</string>
+
+    <string name="value_selected">Value</string>
+    <string name="reset">Reset</string>
+
+    <string name="setting_button_tap">Long press Marker and Drag</string>
+    <string name="settings_button_search">Change Position by Search</string>
+    <string name="settings_change_position">Change Position</string>
+    <string name="search_query_map">Enter Address or Tap on Map</string>
+
+    <string name="no_data">Error With Connection</string>
+    <string name="no_add_google_coupon_title">Can\'t Be Added</string>
+    <string name="no_add_google_coupon_message">You can\'t add google Products to Favorites</string>
+
+    <string name="not_logged_in">Not Logged In</string>
+    <string name="post_deal">Post Deal</string>
+    <string name="posting_data">Posting Data to facebook</string>
+    <string name="logged_out_text">Log out!</string>
+    <string name="not_connected_to_facebook">You have logged out!</string>
+
+    <string name="facebook_app_id">710223329118122</string>
+    <string name="google_maps_key_rohit">AIzaSyCBstvRe5uzgkhccRzhLddgHhkGwT2f548</string>
+    <string name="google_maps_key_komal">AIzaSyCFW9sh8uZQnq4OGlTuHwiQuXiayaw-LBU</string>
+
+</resources>

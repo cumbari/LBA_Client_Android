@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/nav_background"
+    android:id="@+id/header_main_layout"
+    android:padding="3dip"
+    >
+
+    <ImageView
+        android:id="@+id/header_edit_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:padding="3dip"
+        android:src="@drawable/selector_edit"/>
+
+    <ImageView
+        android:id="@+id/header_app_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/icon"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/header_map_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="7dip"
+        android:src="@drawable/map"/>
+
+
+</RelativeLayout>

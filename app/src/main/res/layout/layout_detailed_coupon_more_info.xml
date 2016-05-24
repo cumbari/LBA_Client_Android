@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        >
+        <TextView
+            android:id="@+id/more_info_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/very_large_text"
+            android:layout_marginTop="10dip"
+            android:textColor="@color/white"
+            android:text="@string/more_info_title"
+            android:gravity="center"
+
+            />
+
+        <TextView
+            android:id="@+id/more_info_coupon_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/large_text"
+            android:layout_marginTop="15dip"
+            android:textColor="@color/white"
+            android:text=""
+            />
+
+        <TextView
+            android:id="@+id/more_info_coupon_slogan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/more_info_coupon_title"
+            android:textSize="@dimen/normal_text"
+            android:layout_marginTop="5dip"
+            android:textColor="@color/white"
+            android:text=""
+            />
+
+        <TextView
+            android:id="@+id/more_info_coupon_productinfo_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/more_info_coupon_slogan"
+            android:textSize="@dimen/normal_text"
+            android:layout_marginTop="10dip"
+            android:textColor="@color/white"
+            android:text=""
+            android:textStyle="italic"
+            android:autoLink="web"
+            />
+
+        <TextView
+            android:id="@+id/more_info_coupon_store_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/more_info_coupon_productinfo_link"
+            android:textSize="@dimen/large_text"
+            android:layout_marginTop="10dip"
+            android:textColor="@color/white"
+            android:text="@string/more_info_store_information"
+
+            />
+
+        <TextView
+            android:id="@+id/more_info_coupon_store_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/more_info_coupon_store_label"
+            android:textSize="@dimen/normal_text"
+            android:layout_marginTop="3dip"
+            android:textColor="@color/white"
+            android:text=""
+            />
+
+        <TextView
+            android:id="@+id/more_info_coupon_address_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/more_info_coupon_store_info"
+            android:textSize="@dimen/large_text"
+            android:layout_marginTop="20dip"
+            android:textColor="@color/white"
+            android:text="@string/more_info_address"
+
+            />
+
+        <TextView
+            android:id="@+id/more_info_coupon_address_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/more_info_coupon_address_label"
+            android:textSize="@dimen/normal_text"
+            android:layout_marginTop="3dip"
+            android:textColor="@color/white"
+            android:text=""
+            />
+
+        <TextView
+            android:id="@+id/more_info_coupon_phone_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/more_info_coupon_address_info"
+            android:textSize="@dimen/large_text"
+            android:layout_marginTop="20dip"
+            android:textColor="@color/white"
+            android:text="@string/more_info_phone"
+
+            />
+
+        <TextView
+            android:id="@+id/more_info_coupon_phone_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/more_info_coupon_phone_label"
+            android:textSize="@dimen/normal_text"
+            android:layout_marginTop="3dip"
+            android:textColor="@color/white"
+            android:text=""
+            android:autoLink="phone"
+
+            />
+
+        <TextView
+            android:id="@+id/more_info_coupon_email_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/more_info_coupon_phone_info"
+            android:textSize="@dimen/large_text"
+            android:layout_marginTop="20dip"
+            android:textColor="@color/white"
+            android:text="@string/more_info_email"
+
+            />
+
+        <TextView
+            android:id="@+id/more_info_coupon_email_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/more_info_coupon_email_label"
+            android:textSize="@dimen/normal_text"
+            android:layout_marginTop="3dip"
+            android:textColor="@color/white"
+            android:text=""
+            android:autoLink="email"
+            />
+
+        <TextView
+            android:id="@+id/more_info_coupon_company_home_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/more_info_coupon_email_info"
+            android:textSize="@dimen/large_text"
+            android:layout_marginTop="20dip"
+            android:textColor="@color/white"
+            android:text="@string/more_info_company_home_page"
+
+            />
+
+        <TextView
+            android:id="@+id/more_info_coupon_company_home_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/more_info_coupon_company_home_label"
+            android:textSize="@dimen/normal_text"
+            android:layout_marginTop="3dip"
+            android:textColor="@color/white"
+            android:text=""
+            android:autoLink="web"
+            />
+    </LinearLayout>
+</ScrollView>

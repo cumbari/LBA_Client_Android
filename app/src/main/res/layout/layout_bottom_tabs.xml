@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/tab_bg"
+    android:id="@+id/bottom_main_layout"
+    android:weightSum="5"
+    android:layout_alignParentBottom="true"
+    android:orientation="horizontal"
+    >
+
+    <LinearLayout
+        android:id="@+id/bottom_hot_deals_layout"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:paddingTop="10dip"
+        android:paddingBottom="2dip"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/bottom_hot_deals_icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/selector_hot_deals"/>
+
+        <TextView
+            android:id="@+id/bottom_hot_deals_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dip"
+            android:singleLine="true"
+            android:textColor="@drawable/selector_title"
+            android:gravity="center"
+            android:textSize="@dimen/small_text"
+            android:text="@string/title_hot_deals"
+           />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/bottom_categories_layout"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:paddingTop="10dip"
+        android:paddingBottom="2dip"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/bottom_categories_icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/selector_categories"/>
+
+        <TextView
+            android:id="@+id/bottom_categories_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_categories"
+            android:textSize="@dimen/small_text"
+            android:singleLine="true"
+            android:textColor="@drawable/selector_title"
+            android:gravity="center"
+            android:layout_marginTop="4dip"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_brands_layout"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:paddingTop="10dip"
+        android:paddingBottom="2dip"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/bottom_brands_icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/selector_brands"/>
+
+        <TextView
+            android:id="@+id/bottom_brands_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_brands"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@drawable/selector_title"
+            android:layout_marginTop="4dip"
+            android:textSize="@dimen/small_text"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_favorities_layout"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:paddingTop="10dip"
+        android:paddingBottom="2dip"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/bottom_favorities_icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/selector_favorities"/>
+
+        <TextView
+            android:id="@+id/bottom_favorities_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_favorities"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@drawable/selector_title"
+            android:layout_marginTop="4dip"
+            android:textSize="@dimen/small_text"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_more_layout"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:paddingTop="10dip"
+        android:paddingBottom="2dip"
+        android:layout_weight="1"
+        android:layout_gravity="center">
+        <ImageView
+            android:id="@+id/bottom_more_icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/selector_more"/>
+
+        <TextView
+            android:id="@+id/bottom_more_title"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:text="@string/title_more"
+            android:singleLine="true"
+            android:textColor="@drawable/selector_title"
+            android:gravity="center|bottom"
+            android:paddingBottom="4dip"
+            android:textSize="@dimen/small_text"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

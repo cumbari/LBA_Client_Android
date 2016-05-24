@@ -1,0 +1,95 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    >
+
+
+    <LinearLayout
+        android:id="@+id/layoutMapButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:weightSum="1"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="@string/setting_button_tap"
+            android:textSize="@dimen/normal_text"
+            android:gravity="center"
+            android:visibility="visible"
+            android:padding="10dip"
+            android:layout_margin="2dip"
+            android:background="@drawable/selector_detailed_coupon_button_bg"
+            android:textColor="@color/white"
+            android:id="@+id/tapmap"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_button_search"
+            android:layout_weight=".5"
+            android:gravity="center"
+            android:padding="10dip"
+            android:layout_marginTop="2dip"
+            android:layout_marginBottom="2dip"
+            android:textSize="@dimen/normal_text"
+            android:background="@drawable/selector_detailed_coupon_button_bg"
+            android:textColor="@color/white"
+            android:visibility="visible"
+            android:id="@+id/searchmap"
+
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/activity_header_mapsettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:background="@drawable/nav_background_activities"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="@string/settings_change_position"
+        android:singleLine="true"
+        android:textSize="@dimen/large_text"
+        />
+
+    <fragment
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_above="@id/layoutMapButtons"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/activity_header_mapsettings"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+    <include
+        android:id="@+id/searchLayout"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_header_mapsettings"
+        android:layout_width="wrap_content"
+        layout="@layout/searchview"
+        >
+
+    </include>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sugglistView"
+        android:clickable="false"
+        android:visibility="gone"
+        android:layout_below="@+id/searchLayout"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="#FFFFFF"
+        android:choiceMode="singleChoice" />
+</RelativeLayout>
