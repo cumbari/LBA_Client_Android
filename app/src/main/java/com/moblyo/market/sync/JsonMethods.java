@@ -1,6 +1,5 @@
 package com.moblyo.market.sync;
 import com.moblyo.market.model.CouponViewStatistic;
-import com.shephertz.cumbari.sync.ApiUrls;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

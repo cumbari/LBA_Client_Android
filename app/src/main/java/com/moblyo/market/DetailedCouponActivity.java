@@ -31,7 +31,7 @@ import com.google.gson.Gson;
 import com.koushikdutta.ion.Ion;
 import com.moblyo.market.interfaces.OnLoadMoreListener;
 import com.moblyo.market.location.Coordinate;
-import com.shephertz.cumbari.model.ActivatedDealCouponList;
+import com.moblyo.market.model.ActivatedDealCouponList;
 import com.moblyo.market.model.CouponViewStatistic;
 import com.moblyo.market.model.FavouritesModel;
 import com.moblyo.market.model.LimitPeriodList;
