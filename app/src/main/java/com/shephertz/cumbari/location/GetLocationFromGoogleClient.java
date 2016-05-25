@@ -1,4 +1,4 @@
-package com.shephertz.cumbari.location;
+package com.moblyo.market.location;
 
 import android.app.Activity;
 import android.content.IntentSender;
@@ -16,10 +16,10 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
-import com.shephertz.cumbari.interfaces.SyncAllDataCallback;
-import com.shephertz.cumbari.utils.APPConstants;
-import com.shephertz.cumbari.utils.SharedPrefKeys;
-import com.shephertz.cumbari.utils.SharedPreferenceUtil;
+import com.moblyo.market.interfaces.SyncAllDataCallback;
+import com.moblyo.market.utils.APPConstants;
+import com.moblyo.market.utils.SharedPrefKeys;
+import com.moblyo.market.utils.SharedPreferenceUtil;
 
 /**
  * Created by Komal on 25/04/16.

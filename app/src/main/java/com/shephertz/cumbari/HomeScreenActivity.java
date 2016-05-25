@@ -1,4 +1,4 @@
-package com.shephertz.cumbari;
+package com.moblyo.market;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,18 +9,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.shephertz.cumbari.fragments.BrandsFragment;
-import com.shephertz.cumbari.fragments.CategoriesFragment;
-import com.shephertz.cumbari.fragments.FavoritesFragment;
-import com.shephertz.cumbari.fragments.HotDealsFragment;
-import com.shephertz.cumbari.fragments.MoreFragment;
-import com.shephertz.cumbari.interfaces.OnFragmentAttachedListener;
-import com.shephertz.cumbari.interfaces.OnPassValueToFragmentListener;
-import com.shephertz.cumbari.model.ResponseGetBrandedCoupons;
-import com.shephertz.cumbari.model.ResponseGetCategories;
-import com.shephertz.cumbari.model.ResponseGetCoupons;
-import com.shephertz.cumbari.utils.SharedPrefKeys;
-import com.shephertz.cumbari.utils.TCLogger;
+import com.moblyo.market.fragments.BrandsFragment;
+import com.moblyo.market.fragments.CategoriesFragment;
+import com.moblyo.market.fragments.FavoritesFragment;
+import com.moblyo.market.fragments.HotDealsFragment;
+import com.moblyo.market.fragments.MoreFragment;
+import com.moblyo.market.interfaces.OnFragmentAttachedListener;
+import com.moblyo.market.interfaces.OnPassValueToFragmentListener;
+import com.moblyo.market.model.ResponseGetBrandedCoupons;
+import com.moblyo.market.model.ResponseGetCategories;
+import com.moblyo.market.model.ResponseGetCoupons;
+import com.moblyo.market.utils.SharedPrefKeys;
+import com.moblyo.market.utils.TCLogger;
 
 import org.json.JSONException;
 import org.json.JSONObject;

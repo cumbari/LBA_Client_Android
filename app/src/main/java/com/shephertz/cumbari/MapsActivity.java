@@ -1,4 +1,4 @@
-package com.shephertz.cumbari;
+package com.moblyo.market;
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,10 +11,10 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
-import com.shephertz.cumbari.model.FavouritesModel;
-import com.shephertz.cumbari.model.ListOfStores;
-import com.shephertz.cumbari.model.ResponseGetCoupons;
-import com.shephertz.cumbari.utils.SharedPrefKeys;
+import com.moblyo.market.model.FavouritesModel;
+import com.moblyo.market.model.ListOfStores;
+import com.moblyo.market.model.ResponseGetCoupons;
+import com.moblyo.market.utils.SharedPrefKeys;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -187,7 +187,7 @@ public class MapsActivity extends BaseActivity
         float latitude = sharedPreferenceUtil.getData(SharedPrefKeys.CURRENT_LATITUDE, 0f);
         float longitude = sharedPreferenceUtil.getData(SharedPrefKeys.CURRENT_LONGITUDE, 0f);
         STARTING_MARKER_POSITION=new LatLng(latitude,longitude);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(STARTING_MARKER_POSITION, 10));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(STARTING_MARKER_POSITION, 14));
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         if(title!=null) {
             mMap.addMarker(new MarkerOptions()

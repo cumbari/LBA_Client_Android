@@ -1,4 +1,4 @@
-package com.shephertz.cumbari.utils;
+package com.moblyo.market.utils;
 
 /**
  * Created by Rohit on 5/4/2016.

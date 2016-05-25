@@ -1,4 +1,4 @@
-package com.shephertz.cumbari;
+package com.moblyo.market;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -34,8 +34,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.shephertz.cumbari.sync.SyncApplicationData;
-import com.shephertz.cumbari.utils.SharedPrefKeys;
+import com.moblyo.market.sync.SyncApplicationData;
+import com.moblyo.market.utils.SharedPrefKeys;
 
 import org.json.JSONArray;
 import org.json.JSONException;

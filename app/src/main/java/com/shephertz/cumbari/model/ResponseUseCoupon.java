@@ -1,4 +1,4 @@
-package com.shephertz.cumbari.model;
+package com.moblyo.market.model;
 
 
 import java.io.Serializable;

@@ -1,4 +1,4 @@
-package com.shephertz.cumbari;
+package com.moblyo.market;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,10 +10,10 @@ import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-import com.shephertz.cumbari.adapter.PositionRecyclerViewAdapter;
-import com.shephertz.cumbari.sync.SyncApplicationData;
-import com.shephertz.cumbari.utils.RecyclerItemClickListener;
-import com.shephertz.cumbari.utils.SharedPrefKeys;
+import com.moblyo.market.adapter.PositionRecyclerViewAdapter;
+import com.moblyo.market.sync.SyncApplicationData;
+import com.moblyo.market.utils.RecyclerItemClickListener;
+import com.moblyo.market.utils.SharedPrefKeys;
 
 import java.util.ArrayList;
 

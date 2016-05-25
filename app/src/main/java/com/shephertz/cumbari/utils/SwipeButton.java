@@ -1,4 +1,4 @@
-package com.shephertz.cumbari.utils;
+package com.moblyo.market.utils;
 
 import android.content.Context;
 import android.graphics.LinearGradient;

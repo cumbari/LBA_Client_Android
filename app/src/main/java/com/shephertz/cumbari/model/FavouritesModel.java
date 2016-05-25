@@ -1,4 +1,4 @@
-package com.shephertz.cumbari.model;
+package com.moblyo.market.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,11 +21,11 @@ public class FavouritesModel implements Serializable
         this.coupons = coupons;
     }
 
-    public ArrayList<com.shephertz.cumbari.model.ListOfStores> getListOfStores() {
+    public ArrayList<com.moblyo.market.model.ListOfStores> getListOfStores() {
         return ListOfStores;
     }
 
-    public void setListOfStores(ArrayList<com.shephertz.cumbari.model.ListOfStores> listOfStores) {
+    public void setListOfStores(ArrayList<com.moblyo.market.model.ListOfStores> listOfStores) {
         ListOfStores = listOfStores;
     }
 }

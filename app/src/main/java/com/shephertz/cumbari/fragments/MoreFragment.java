@@ -1,4 +1,4 @@
-package com.shephertz.cumbari.fragments;
+package com.moblyo.market.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,12 +14,12 @@ import android.view.ViewGroup;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import com.shephertz.cumbari.PositionActivity;
-import com.shephertz.cumbari.R;
-import com.shephertz.cumbari.SettingsActivity;
-import com.shephertz.cumbari.adapter.MoreRecyclerViewAdapter;
-import com.shephertz.cumbari.utils.APPConstants;
-import com.shephertz.cumbari.utils.RecyclerItemClickListener;
+import com.moblyo.market.PositionActivity;
+import com.moblyo.market.R;
+import com.moblyo.market.SettingsActivity;
+import com.moblyo.market.adapter.MoreRecyclerViewAdapter;
+import com.moblyo.market.utils.APPConstants;
+import com.moblyo.market.utils.RecyclerItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;

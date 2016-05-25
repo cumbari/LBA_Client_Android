@@ -1,4 +1,4 @@
-package com.shephertz.cumbari.adapter;
+package com.moblyo.market.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,15 +11,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.koushikdutta.ion.Ion;
-import com.shephertz.cumbari.HomeScreenActivity;
-import com.shephertz.cumbari.R;
-import com.shephertz.cumbari.location.Coordinate;
-import com.shephertz.cumbari.model.ListOfCoupons;
-import com.shephertz.cumbari.model.ListOfStores;
-import com.shephertz.cumbari.model.ResponseGetCoupons;
-import com.shephertz.cumbari.utils.SharedPrefKeys;
-import com.shephertz.cumbari.utils.SharedPreferenceUtil;
-import com.shephertz.cumbari.utils.TypeFaceClass;
+import com.moblyo.market.HomeScreenActivity;
+import com.moblyo.market.R;
+import com.moblyo.market.location.Coordinate;
+import com.moblyo.market.model.ListOfCoupons;
+import com.moblyo.market.model.ListOfStores;
+import com.moblyo.market.model.ResponseGetCoupons;
+import com.moblyo.market.utils.SharedPrefKeys;
+import com.moblyo.market.utils.SharedPreferenceUtil;
+import com.moblyo.market.utils.TypeFaceClass;
 
 import java.util.ArrayList;
 

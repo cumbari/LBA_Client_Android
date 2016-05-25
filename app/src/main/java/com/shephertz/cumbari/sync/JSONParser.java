@@ -1,4 +1,4 @@
-package com.shephertz.cumbari.sync;
+package com.moblyo.market.sync;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;

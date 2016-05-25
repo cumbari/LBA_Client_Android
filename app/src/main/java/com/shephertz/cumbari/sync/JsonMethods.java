@@ -1,8 +1,8 @@
-package com.shephertz.cumbari.sync;
-import com.shephertz.cumbari.model.CouponViewStatistic;
+package com.moblyo.market.sync;
+import com.moblyo.market.model.CouponViewStatistic;
+import com.shephertz.cumbari.sync.ApiUrls;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
 import java.net.URLEncoder;
 
 /**
@@ -15,7 +15,7 @@ public class JsonMethods
     public String getHostURL(float longitude,float latitude)
     {
         JSONParser parser = new JSONParser();
-		String url=ApiUrls.GETHOSTURL + "latitude="+latitude+"&longitude="+longitude;
+		String url= ApiUrls.GETHOSTURL + "latitude="+latitude+"&longitude="+longitude;
         return parser.getJSONFromUrlGetMethod(url);
 
     }

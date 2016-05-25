@@ -1,4 +1,4 @@
-package com.shephertz.cumbari.location;
+package com.moblyo.market.location;
 
 /**
  * Created by Komal on 28/04/16.

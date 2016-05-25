@@ -1,4 +1,4 @@
-package com.shephertz.cumbari.fragments;
+package com.moblyo.market.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,19 +11,19 @@ import android.view.ViewGroup;
 import android.widget.SearchView;
 
 import com.google.gson.Gson;
-import com.shephertz.cumbari.DetailedCouponActivity;
-import com.shephertz.cumbari.HomeScreenActivity;
-import com.shephertz.cumbari.MapsActivity;
-import com.shephertz.cumbari.R;
-import com.shephertz.cumbari.adapter.FavoritiesRecyclerViewAdapter;
-import com.shephertz.cumbari.location.Coordinate;
-import com.shephertz.cumbari.model.FavouritesModel;
-import com.shephertz.cumbari.model.ListOfCoupons;
-import com.shephertz.cumbari.model.ListOfStores;
-import com.shephertz.cumbari.model.ResponseGetCoupons;
-import com.shephertz.cumbari.utils.RecyclerItemClickListener;
-import com.shephertz.cumbari.utils.SharedPrefKeys;
-import com.shephertz.cumbari.utils.SortDataTableByDistanceFormatter;
+import com.moblyo.market.DetailedCouponActivity;
+import com.moblyo.market.HomeScreenActivity;
+import com.moblyo.market.MapsActivity;
+import com.moblyo.market.R;
+import com.moblyo.market.adapter.FavoritiesRecyclerViewAdapter;
+import com.moblyo.market.location.Coordinate;
+import com.moblyo.market.model.FavouritesModel;
+import com.moblyo.market.model.ListOfCoupons;
+import com.moblyo.market.model.ListOfStores;
+import com.moblyo.market.model.ResponseGetCoupons;
+import com.moblyo.market.utils.RecyclerItemClickListener;
+import com.moblyo.market.utils.SharedPrefKeys;
+import com.moblyo.market.utils.SortDataTableByDistanceFormatter;
 
 import org.json.JSONException;
 import org.json.JSONObject;

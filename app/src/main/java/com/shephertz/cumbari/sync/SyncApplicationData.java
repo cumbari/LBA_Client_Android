@@ -1,11 +1,11 @@
-package com.shephertz.cumbari.sync;
+package com.moblyo.market.sync;
 
 import com.google.gson.Gson;
-import com.shephertz.cumbari.model.ResponseGetCoupons;
-import com.shephertz.cumbari.model.ResponseGetHostURL;
-import com.shephertz.cumbari.utils.SharedPrefKeys;
-import com.shephertz.cumbari.utils.SharedPreferenceUtil;
-import com.shephertz.cumbari.utils.TimeIgnoringComparator;
+import com.moblyo.market.model.ResponseGetCoupons;
+import com.moblyo.market.model.ResponseGetHostURL;
+import com.moblyo.market.utils.SharedPrefKeys;
+import com.moblyo.market.utils.SharedPreferenceUtil;
+import com.moblyo.market.utils.TimeIgnoringComparator;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,4 +1,4 @@
-package com.shephertz.cumbari.adapter;
+package com.moblyo.market.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,10 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.shephertz.cumbari.R;
-import com.shephertz.cumbari.utils.SharedPrefKeys;
-import com.shephertz.cumbari.utils.SharedPreferenceUtil;
-import com.shephertz.cumbari.utils.TypeFaceClass;
+import com.moblyo.market.R;
+import com.moblyo.market.utils.SharedPrefKeys;
+import com.moblyo.market.utils.SharedPreferenceUtil;
+import com.moblyo.market.utils.TypeFaceClass;
 
 import java.util.ArrayList;
 

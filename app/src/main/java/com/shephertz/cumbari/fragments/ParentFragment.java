@@ -1,4 +1,4 @@
-package com.shephertz.cumbari.fragments;
+package com.moblyo.market.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,11 +6,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.shephertz.cumbari.interfaces.OnFragmentAttachedListener;
-import com.shephertz.cumbari.interfaces.OnPassValueToFragmentListener;
-import com.shephertz.cumbari.utils.AppUtility;
-import com.shephertz.cumbari.utils.SharedPreferenceUtil;
-import com.shephertz.cumbari.utils.TypeFaceClass;
+import com.moblyo.market.interfaces.OnFragmentAttachedListener;
+import com.moblyo.market.interfaces.OnPassValueToFragmentListener;
+import com.moblyo.market.utils.AppUtility;
+import com.moblyo.market.utils.SharedPreferenceUtil;
+import com.moblyo.market.utils.TypeFaceClass;
 
 public class ParentFragment extends Fragment implements OnPassValueToFragmentListener {
 	protected OnFragmentAttachedListener mListener;

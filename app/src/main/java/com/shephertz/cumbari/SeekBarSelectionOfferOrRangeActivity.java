@@ -1,4 +1,4 @@
-package com.shephertz.cumbari;
+package com.moblyo.market;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.shephertz.cumbari.utils.SharedPrefKeys;
+import com.moblyo.market.utils.SharedPrefKeys;
 
 public class SeekBarSelectionOfferOrRangeActivity extends BaseActivity
 {

@@ -1,4 +1,4 @@
-package com.shephertz.cumbari.utils;
+package com.moblyo.market.utils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -24,7 +24,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
-import com.shephertz.cumbari.R;
+import com.moblyo.market.R;
 
 public class AppUtility {
 

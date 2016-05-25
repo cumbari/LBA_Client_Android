@@ -1,10 +1,10 @@
 /*
  * Added by Amit Sharma.
  */
-package com.shephertz.cumbari.utils;
+package com.moblyo.market.utils;
 
-import com.shephertz.cumbari.location.Coordinate;
-import com.shephertz.cumbari.model.ListOfCoupons;
+import com.moblyo.market.location.Coordinate;
+import com.moblyo.market.model.ListOfCoupons;
 
 import java.util.Comparator;
 

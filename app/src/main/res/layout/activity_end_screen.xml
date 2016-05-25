@@ -5,6 +5,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/end_screen"
     android:id="@+id/end_screen_main_layout"
-    tools:context="com.shephertz.cumbari.EndScreenActivity">
+    tools:context="com.moblyo.market.EndScreenActivity">
 
 </RelativeLayout>

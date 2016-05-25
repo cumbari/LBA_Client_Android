@@ -1,4 +1,4 @@
-package com.shephertz.cumbari;
+package com.moblyo.market;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-import com.shephertz.cumbari.adapter.SettingsRecyclerViewAdapter;
-import com.shephertz.cumbari.utils.RecyclerItemClickListener;
+import com.moblyo.market.adapter.SettingsRecyclerViewAdapter;
+import com.moblyo.market.utils.RecyclerItemClickListener;
 
 import java.util.ArrayList;
 

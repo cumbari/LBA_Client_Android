@@ -1,7 +1,7 @@
 /*
  * Added by Amit Sharma.
  */
-package com.shephertz.cumbari.utils;
+package com.moblyo.market.utils;
 
 import java.io.File;
 import java.io.FileInputStream;

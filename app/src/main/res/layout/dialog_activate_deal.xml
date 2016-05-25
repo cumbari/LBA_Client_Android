@@ -29,7 +29,7 @@
         android:textSize="@dimen/normal_text"
         />
 
-    <com.shephertz.cumbari.utils.SwipeButton
+    <com.moblyo.market.utils.SwipeButton
         android:id="@+id/my_swipe_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

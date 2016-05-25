@@ -1,4 +1,4 @@
-package com.shephertz.cumbari.interfaces;
+package com.moblyo.market.interfaces;
 
 /**
  * Created by Komal on 26/04/16.

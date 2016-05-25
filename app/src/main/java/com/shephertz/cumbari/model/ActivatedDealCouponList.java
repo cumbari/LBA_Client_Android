@@ -1,5 +1,7 @@
 package com.shephertz.cumbari.model;
 
+import com.moblyo.market.model.ListOfCoupons;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 

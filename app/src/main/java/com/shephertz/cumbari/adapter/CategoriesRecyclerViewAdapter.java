@@ -1,4 +1,4 @@
-package com.shephertz.cumbari.adapter;
+package com.moblyo.market.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -10,11 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.koushikdutta.ion.Ion;
-import com.shephertz.cumbari.HomeScreenActivity;
-import com.shephertz.cumbari.R;
-import com.shephertz.cumbari.model.ListOfCategories;
-import com.shephertz.cumbari.model.ListOfCategoryHits;
-import com.shephertz.cumbari.utils.TypeFaceClass;
+import com.moblyo.market.HomeScreenActivity;
+import com.moblyo.market.R;
+import com.moblyo.market.model.ListOfCategories;
+import com.moblyo.market.model.ListOfCategoryHits;
+import com.moblyo.market.utils.TypeFaceClass;
 
 import java.util.ArrayList;
 

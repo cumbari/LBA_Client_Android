@@ -1,4 +1,4 @@
-package com.shephertz.cumbari.fragments;
+package com.moblyo.market.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,12 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 
-import com.shephertz.cumbari.CouponsInSelectedBrandsActivity;
-import com.shephertz.cumbari.HomeScreenActivity;
-import com.shephertz.cumbari.R;
-import com.shephertz.cumbari.adapter.BrandsRecyclerViewAdapter;
-import com.shephertz.cumbari.model.ListOfBrandHits;
-import com.shephertz.cumbari.utils.RecyclerItemClickListener;
+import com.moblyo.market.CouponsInSelectedBrandsActivity;
+import com.moblyo.market.HomeScreenActivity;
+import com.moblyo.market.R;
+import com.moblyo.market.adapter.BrandsRecyclerViewAdapter;
+import com.moblyo.market.model.ListOfBrandHits;
+import com.moblyo.market.utils.RecyclerItemClickListener;
 
 import java.util.ArrayList;
 

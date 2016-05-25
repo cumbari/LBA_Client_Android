@@ -1,21 +1,16 @@
-package com.shephertz.cumbari.sync;
+package com.moblyo.market.sync;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.google.gson.Gson;
-import com.shephertz.cumbari.interfaces.OnLoadMoreListener;
-import com.shephertz.cumbari.model.CouponViewStatistic;
-import com.shephertz.cumbari.model.ResponseGetCoupons;
-import com.shephertz.cumbari.utils.APPConstants;
-import com.shephertz.cumbari.utils.AlertMessage;
-import com.shephertz.cumbari.utils.AppUtility;
-import com.shephertz.cumbari.utils.SharedPrefKeys;
-import com.shephertz.cumbari.utils.SharedPreferenceUtil;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.moblyo.market.BaseActivity;
+import com.moblyo.market.interfaces.OnLoadMoreListener;
+import com.moblyo.market.model.CouponViewStatistic;
+import com.moblyo.market.utils.APPConstants;
+import com.moblyo.market.utils.AppUtility;
+import com.moblyo.market.utils.SharedPrefKeys;
+import com.moblyo.market.utils.SharedPreferenceUtil;
 
 
 /**
@@ -250,7 +245,7 @@ public class CustomAsyncTask extends AsyncTask<Void, Void, Integer>
         if (result == 1){
              callback.onLoadMore(resultModel);
         } else{
-            AlertMessage alertMessage = new AlertMessage(mContext);
+            BaseActivity.AlertMessage alertMessage = new BaseActivity.AlertMessage(mContext);
             switch (currentWebServiceTobeUsed)
             {
                 case APPConstants.GetCouponDetailWebservice:

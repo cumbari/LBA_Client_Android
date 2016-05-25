@@ -152,8 +152,7 @@
     <string name="logged_out_text">Log out!</string>
     <string name="not_connected_to_facebook">You have logged out!</string>
 
-    <string name="facebook_app_id">710223329118122</string>
-    <string name="google_maps_key_rohit">AIzaSyCBstvRe5uzgkhccRzhLddgHhkGwT2f548</string>
-    <string name="google_maps_key_komal">AIzaSyCFW9sh8uZQnq4OGlTuHwiQuXiayaw-LBU</string>
+    <string name="facebook_app_id">457826594364279</string>
+    <string name="google_maps_key_komal"> AIzaSyBpKwQRdik7RZj1DycTmJAQIsYx3TMJ9Bs</string>
 
 </resources>

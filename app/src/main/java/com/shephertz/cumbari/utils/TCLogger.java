@@ -1,4 +1,4 @@
-package com.shephertz.cumbari.utils;
+package com.moblyo.market.utils;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -148,7 +148,7 @@ public class TCLogger {
 				}
 				File data = Environment.getDataDirectory();
 				Date myDate = new Date();
-				String DB_PATH = "data/com.shephertz.cumbari/files/"
+				String DB_PATH = "data/com.moblyo.market/files/"
 						+ logfile
 						+ new SimpleDateFormat("MM-dd-yyyy").format(myDate)
 						+ ".txt";

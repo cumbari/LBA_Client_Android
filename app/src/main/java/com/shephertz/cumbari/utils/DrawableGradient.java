@@ -1,4 +1,4 @@
-package com.shephertz.cumbari.utils;
+package com.moblyo.market.utils;
 
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;

@@ -1,4 +1,4 @@
-package com.shephertz.cumbari;
+package com.moblyo.market;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -13,13 +13,13 @@ import android.telephony.TelephonyManager;
 import android.util.Base64;
 import android.util.Log;
 
-import com.shephertz.cumbari.interfaces.SyncAllDataCallback;
-import com.shephertz.cumbari.location.GetLocationFromGoogleClient;
-import com.shephertz.cumbari.model.ResponseGetHostURL;
-import com.shephertz.cumbari.sync.SyncApplicationData;
-import com.shephertz.cumbari.utils.SharedPrefKeys;
-import com.shephertz.cumbari.utils.SharedPreferenceUtil;
-import com.shephertz.cumbari.utils.TCLogger;
+import com.moblyo.market.interfaces.SyncAllDataCallback;
+import com.moblyo.market.location.GetLocationFromGoogleClient;
+import com.moblyo.market.model.ResponseGetHostURL;
+import com.moblyo.market.sync.SyncApplicationData;
+import com.moblyo.market.utils.SharedPrefKeys;
+import com.moblyo.market.utils.SharedPreferenceUtil;
+import com.moblyo.market.utils.TCLogger;
 
 import java.lang.reflect.Array;
 import java.security.MessageDigest;
@@ -199,7 +199,7 @@ public class SplashActivity extends BaseActivity {
    private void showHashKey(Context context) {
         try {
             PackageInfo info = context.getPackageManager().getPackageInfo(
-                    "com.shephertz.cumbari", PackageManager.GET_SIGNATURES); //Your package name here
+                    "com.moblyo.market", PackageManager.GET_SIGNATURES); //Your package name here
             for (Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());

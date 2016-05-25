@@ -1,4 +1,4 @@
-package com.shephertz.cumbari.utils;
+package com.moblyo.market.utils;
 
 public abstract class SwipeButtonCustomItems {
     //These are the default values if we don't choose to set them later:
