@@ -222,6 +222,12 @@ public class GetLocationFromGoogleClient  implements
         if (location != null) {
             SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.CURRENT_LATITUDE,(float)location.getLatitude());
             SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.CURRENT_LONGITUDE,(float)location.getLongitude());
+
+            if(SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.IS_CURRENT_POSITION, true) || SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.WEBSERVICE_LATITUDE,0f) == 0) {
+                SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.WEBSERVICE_LATITUDE,SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.CURRENT_LATITUDE,0f));
+                SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.WEBSERVICE_LONGITUDE,SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.CURRENT_LONGITUDE,0f));
+            }
+
             if(!isSyncStarted && mSyncAllDataCallback != null){
                 isSyncStarted = true;
                 mSyncAllDataCallback.onSuccess(true);
