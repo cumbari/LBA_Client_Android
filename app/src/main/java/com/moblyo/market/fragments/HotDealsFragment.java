@@ -245,24 +245,7 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
                                         if (!loading && (visibleItemCount + pastVisiblesItems) >= totalItemCount && totalItemCount != 0 && totalItemCount >= visibleThreshold) {
                                             data_load_progress.setVisibility(View.VISIBLE);
                                             int batchNo = (totalItemCount/visibleThreshold) + 1;
-                                            TCLogger.writeToCumbariLogFile(getActivity(), "HotDeals Search> onScroll", " Batch- "+batchNo);
-                                            new CustomAsyncTask(getActivity(), APPConstants.FindCouponsWebservice, filterString, batchNo,false, new OnLoadMoreListener<String>() {
-                                                @Override
-                                                public void onLoadMore(String resultModel) {
-                                                    try {
-                                                        TCLogger.writeToCumbariLogFile(getActivity(), "HotDeals Search> onScroll > onLoadMore: ", resultModel);
-                                                        data_load_progress.setVisibility(View.GONE);
-                                                        setSearchData(resultModel);
-                                                        TCLogger.writeToCumbariLogFile(getActivity(), "HotDeals Search> onScroll > Total Data: ", sharedPreferenceUtil.getData(SharedPrefKeys.GET_COUPONS + sharedPreferenceUtil.getData(SharedPrefKeys.LANGUAGE, "ENG") + filterString,""));
-
-                                                        visibleThreshold = sharedPreferenceUtil.getData(SharedPrefKeys.MAX_NUMBER, 10);
-
-                                                    } catch (Exception e) {
-                                                        TCLogger.writeToCumbariLogFile(getActivity(), "Exception Scroll Search Data Fetch", "Exception :"+e.getMessage());
-                                                    }
-                                                    loading = false;
-                                                }
-                                            }).execute();
+                                            syncCouponDataWhileSearching(batchNo,false);
                                             loading = true;
                                         }
                                     } else if (((HomeScreenActivity) mActivity).getCouponsData != null && !((HomeScreenActivity) mActivity).getCouponsData.isMaxNumberReached()) {
@@ -270,26 +253,7 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
                                             data_load_progress.setVisibility(View.VISIBLE);
                                             int batchNo = (totalItemCount/visibleThreshold) + 1;
                                             TCLogger.writeToCumbariLogFile(getActivity(), "HotDeals > onScroll", " Batch- "+batchNo);
-                                            new CustomAsyncTask(getActivity(), APPConstants.GetCouponsWebservice, "", batchNo,false, new OnLoadMoreListener<String>() {
-                                                @Override
-                                                public void onLoadMore(String resultModel) {
-                                                    try {
-                                                        data_load_progress.setVisibility(View.GONE);
-                                                        TCLogger.writeToCumbariLogFile(getActivity(), "HotDeals > onScroll > onLoadMore: ", resultModel);
-
-                                                        extractDataFromLocal(resultModel);//set new data in share pref and extact array list from that
-                                                        setHotDealData();//again set hot deals array list and then notify
-
-                                                        mMyHotDealsRecyclerViewAdapter.notifyDataSetChanged();
-                                                        visibleThreshold = sharedPreferenceUtil.getData(SharedPrefKeys.MAX_NUMBER, 10);
-                                                        TCLogger.writeToCumbariLogFile(getActivity(), "HotDeals > onScroll > Total Data: ", sharedPreferenceUtil.getData(SharedPrefKeys.GET_COUPONS + sharedPreferenceUtil.getData(SharedPrefKeys.LANGUAGE, "ENG"),""));
-
-                                                    } catch (Exception e) {
-                                                        TCLogger.writeToCumbariLogFile(getActivity(), "Exception Scroll  Data Fetch", "Exception :"+e.getMessage());
-                                                    }
-                                                    loading = false;
-                                                }
-                                            }).execute();
+                                            syncCouponData(batchNo,false);
                                             loading = true;
                                         }
                                     }
@@ -306,6 +270,41 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
         }
 
         return view;
+    }
+
+    private void syncCouponDataWhileSearching(int batchNo, boolean showProgress) {
+        new CustomAsyncTask(getActivity(), APPConstants.FindCouponsWebservice, filterString, batchNo,showProgress, new OnLoadMoreListener<String>() {
+            @Override
+            public void onLoadMore(String resultModel) {
+                try {
+                    data_load_progress.setVisibility(View.GONE);
+                    setSearchData(resultModel);
+                    visibleThreshold = sharedPreferenceUtil.getData(SharedPrefKeys.MAX_NUMBER, 10);
+                } catch (Exception e) {
+                }
+                loading = false;
+            }
+        }).execute();
+    }
+
+    private void syncCouponData(int batchNo, boolean showProgress) {
+        new CustomAsyncTask(getActivity(), APPConstants.GetCouponsWebservice, "", batchNo,showProgress, new OnLoadMoreListener<String>() {
+            @Override
+            public void onLoadMore(String resultModel) {
+                try {
+                    data_load_progress.setVisibility(View.GONE);
+
+                    if(extractDataFromLocal(resultModel)) {//set new data in share pref and extact array list from that
+                        setHotDealData();//again set hot deals array list and then notify
+                        mMyHotDealsRecyclerViewAdapter.notifyDataSetChanged();
+                        visibleThreshold = sharedPreferenceUtil.getData(SharedPrefKeys.MAX_NUMBER, 10);
+                    }
+
+                } catch (Exception e) {
+                }
+                loading = false;
+            }
+        }).execute();
     }
 
     private void setHotDealData() {
@@ -440,6 +439,7 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
 
     private void setSearchData(String resultModel) {
         hotDealsSearchArray.clear();
+
         Gson gson = new Gson();
         try {
             JSONObject onj = new JSONObject(resultModel);
@@ -518,7 +518,18 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
         }
     }
 
-    private void extractDataFromLocal(String resultModel) {
+    @Override
+    public void sortData(boolean sortData) {
+        if(sortData){
+            if (isSearch) {
+                syncCouponDataWhileSearching(1,true);
+            } else {
+                  syncCouponData(1,true);
+            }
+        }
+    }
+
+    private boolean extractDataFromLocal(String resultModel) {
         try {
             Gson gson = new Gson();
             JSONObject onj = null;
@@ -553,12 +564,15 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
                             ((HomeScreenActivity) mActivity).getCouponsData.setMaxNumberReached(getCouponsData.isMaxNumberReached());
 
                             sharedPreferenceUtil.saveData(SharedPrefKeys.GET_COUPONS + sharedPreferenceUtil.getData(SharedPrefKeys.LANGUAGE, "ENG"), gson.toJson(((HomeScreenActivity) mActivity).getCouponsData, ResponseGetCoupons.class));
+                            return true;
                         }
                     }
                 }
             }
         }catch (Exception e){
         }
+
+        return false;
     }
 
 }

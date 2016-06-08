@@ -76,7 +76,7 @@ public class SplashActivity extends BaseActivity {
                     DownloadDatabase task = new DownloadDatabase();
                     task.execute("");
                 }
-            });
+            },null);
             getLocationFromGoogleClient.checkLocationSettings();
         }
 

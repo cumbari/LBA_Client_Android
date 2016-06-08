@@ -48,6 +48,7 @@ import com.moblyo.market.utils.SwipeButtonCustomItems;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -149,6 +150,15 @@ public class DetailedCouponActivity extends BaseActivity
     private CallbackManager callbackManager;
     private ShareDialog shareDialog;
 
+    //For viewOpt
+    private boolean shouldShowTimer;
+    private Handler handlerForToggling;
+    private Runnable runnableForToggling;
+
+    private Handler handlerValidUntil;
+    private Runnable runnableValidUntil;
+    private long days,hours, minutes, seconds;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -185,6 +195,14 @@ public class DetailedCouponActivity extends BaseActivity
                                 detail_coupon_distance.setBackgroundResource(R.drawable.cancel_rounded_bg);
                             }
                         }
+
+                        String viewOpt = couponData.getViewOpt();
+                        if (viewOpt.equals("CD") && distanceToSendForUseCoupon>=300) {
+                            shouldShowTimer = true;
+                            showCDTimer();
+                            startTimerToToggleForViewOpt();
+                        }
+
                     }else{
                         alertMessage.alertBoxForNoDetailing(DetailedCouponActivity.this);
                     }
@@ -193,6 +211,86 @@ public class DetailedCouponActivity extends BaseActivity
                 }
             }
         }).execute();
+    }
+
+    private void showCDTimer(){
+        detail_coupon_validity.setText(getResources().getString(R.string.offer_expires_in));
+        //Time left from End of Publishing from now
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        try {
+            Date endDateForTimer = sdf.parse(couponData.getEndOfPublishing());
+            seconds = System.currentTimeMillis() - endDateForTimer.getTime();
+            startValidUntilTimer();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void startValidUntilTimer() {
+        if (handlerValidUntil != null) {
+            handlerValidUntil.removeCallbacks(runnableValidUntil);
+            handlerValidUntil = null;
+        }
+
+        runnableValidUntil = new Runnable(){
+            public void run() {
+                try{
+                    if(seconds > 0 ) {
+                        seconds -- ;
+                        hours = seconds / 3600;
+                        days = hours/24;
+                        hours = hours%24;
+                        minutes = (seconds % 3600) / 60;
+                        seconds = (seconds %3600) % 60;
+                        if(shouldShowTimer) {
+                            detail_coupon_distance.setText(appUtility.getTimerCountDownValueForViewOpt(days, hours, minutes, seconds));
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                if (handlerValidUntil != null)
+                    handlerValidUntil.postDelayed(this, 1000);
+            }
+        };
+        handlerValidUntil = new Handler();
+        handlerValidUntil.postDelayed(runnableValidUntil,1000);
+    }
+
+    private void startTimerToToggleForViewOpt() {
+        if (handlerForToggling != null) {
+            handlerForToggling.removeCallbacks(runnableForToggling);
+            handlerForToggling = null;
+        }
+
+        runnableForToggling = new Runnable(){
+            public void run() {
+                try{
+                    if (distanceToSendForUseCoupon<300) {
+                        if (handlerForToggling != null) {
+                            handlerForToggling.removeCallbacks(runnableForToggling);
+                            handlerForToggling = null;
+                        }
+                        shouldShowTimer = false;
+                    }
+                    else
+                        shouldShowTimer = !shouldShowTimer;
+
+                    if(!shouldShowTimer) {
+                        detail_coupon_distance.setText(calculateDistanceForCoupon().replace(",","."));
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                if (handlerForToggling != null)
+                    handlerForToggling.postDelayed(this, 20*1000);
+            }
+        };
+        handlerForToggling = new Handler();
+        handlerForToggling.postDelayed(runnableForToggling,20*1000);
     }
 
     private void generateFacebookDialog() {
@@ -1279,7 +1377,14 @@ public class DetailedCouponActivity extends BaseActivity
                 handlerForUpdatingDistance = null;
                 runnableForUpdatingDistance = null;
             }
-
+            if (handlerForToggling != null) {
+                handlerForToggling.removeCallbacks(runnableForToggling);
+                handlerForToggling = null;
+            }
+            if (handlerValidUntil != null) {
+                handlerValidUntil.removeCallbacks(runnableValidUntil);
+                handlerValidUntil = null;
+            }
             if(!callBackHomeScreen) {
                 super.onBackPressed();
             }else{

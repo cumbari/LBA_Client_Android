@@ -36,7 +36,7 @@ public class BaseActivity extends AppCompatActivity{
         appUtility = new AppUtility(BaseActivity.this);
         typeFaceClass = new TypeFaceClass(BaseActivity.this);
         if(!isSplash){
-             getLocationFromGoogleClient = new GetLocationFromGoogleClient(BaseActivity.this,null);
+             getLocationFromGoogleClient = new GetLocationFromGoogleClient(BaseActivity.this,null,null);
              getLocationFromGoogleClient.checkLocationSettings();
         }
     }

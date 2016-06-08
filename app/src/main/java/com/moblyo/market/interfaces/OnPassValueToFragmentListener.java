@@ -6,5 +6,6 @@ package com.moblyo.market.interfaces;
 public interface OnPassValueToFragmentListener {
     public void isEditEnabledPassToFragment(boolean isEnabled);
     public void isMapSelectedToFragment(int mapSelectedIndex);
+    public void sortData(boolean sortData);
 
 }

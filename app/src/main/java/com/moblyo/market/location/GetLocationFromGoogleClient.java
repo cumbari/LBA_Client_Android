@@ -16,6 +16,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.moblyo.market.interfaces.SortCouponsByDistanceCallback;
 import com.moblyo.market.interfaces.SyncAllDataCallback;
 import com.moblyo.market.utils.APPConstants;
 import com.moblyo.market.utils.SharedPrefKeys;
@@ -66,12 +67,15 @@ public class GetLocationFromGoogleClient  implements
      */
     public Location mCurrentLocation;
     private SyncAllDataCallback mSyncAllDataCallback;
+    private SortCouponsByDistanceCallback mSortCouponsByDistanceCallback;
+
     private boolean isSyncStarted = false;
 
-    public GetLocationFromGoogleClient(Activity activity, SyncAllDataCallback syncAllDataCallback){
+    public GetLocationFromGoogleClient(Activity activity, SyncAllDataCallback syncAllDataCallback, SortCouponsByDistanceCallback sortCouponsByDistanceCallback){
         // initializing the GoogleApiClient, LocationRequest, and LocationSettingsRequest objects.
         this.mActivity = activity;
         this.mSyncAllDataCallback = syncAllDataCallback;
+        this.mSortCouponsByDistanceCallback = sortCouponsByDistanceCallback;
         mRequestingLocationUpdates = false;
         isSyncStarted = false;
 
@@ -79,6 +83,7 @@ public class GetLocationFromGoogleClient  implements
         createLocationRequest();
         buildLocationSettingsRequest();
     }
+
 
     /**
      * Builds a GoogleApiClient. Uses the {@code #addApi} method to request the
@@ -112,8 +117,11 @@ public class GetLocationFromGoogleClient  implements
         // inexact. You may not receive updates at all if no location sources are available, or
         // you may receive them slower than requested. You may also receive updates faster than
         // requested if other applications are requesting location at a faster interval.
-        //**********  mLocationRequest.setInterval(UPDATE_INTERVAL_IN_MILLISECONDS);
+        mLocationRequest.setInterval(UPDATE_INTERVAL_IN_MILLISECONDS);
 
+        if(mSortCouponsByDistanceCallback != null) {
+            mLocationRequest.setSmallestDisplacement(300);
+        }
         // Sets the fastest rate for active location updates. This interval is exact, and your
         // application will never receive updates faster than this value.
        //********** mLocationRequest.setFastestInterval(FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS);
@@ -226,6 +234,11 @@ public class GetLocationFromGoogleClient  implements
             if(SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.IS_CURRENT_POSITION, true) || SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.WEBSERVICE_LATITUDE,0f) == 0) {
                 SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.WEBSERVICE_LATITUDE,SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.CURRENT_LATITUDE,0f));
                 SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.WEBSERVICE_LONGITUDE,SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.CURRENT_LONGITUDE,0f));
+            }
+
+            if(mSortCouponsByDistanceCallback != null){
+                //300m location is changed
+                mSortCouponsByDistanceCallback.refreshData(true);
             }
 
             if(!isSyncStarted && mSyncAllDataCallback != null){

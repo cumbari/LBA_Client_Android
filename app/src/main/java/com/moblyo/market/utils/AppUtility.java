@@ -249,6 +249,10 @@ public class AppUtility {
 		return c.getResources().getString(R.string.use_deal_within)+" "+pad(counterMin)+":"+pad(counterSec)+" "+c.getResources().getString(R.string.min);
 	}
 
+	public String getTimerCountDownValueForViewOpt(long day, long hour, long min, long sec){
+		return pad((int)day)+":"+pad((int)hour) + pad((int)min)+":"+pad((int)sec);
+	}
+
 	public void setLocale() {
 		Resources res = mActivity.getResources();
 		DisplayMetrics dm = res.getDisplayMetrics();

@@ -24,7 +24,7 @@ public class CustomAsyncTask extends AsyncTask<Void, Void, Integer>
     private AppUtility appUtility;
     private JsonMethods jsonMetods;
     private OnLoadMoreListener  callback;
-    private final String titleProgress="", msgProgress="\nPlease wait...";
+    private final String titleProgress="", msgProgress="\nLoading Coupon Data...Please wait...";
     private SharedPreferenceUtil sharedPreferenceUtil;
 
     private float latitude ;

@@ -16,6 +16,8 @@ import com.moblyo.market.fragments.HotDealsFragment;
 import com.moblyo.market.fragments.MoreFragment;
 import com.moblyo.market.interfaces.OnFragmentAttachedListener;
 import com.moblyo.market.interfaces.OnPassValueToFragmentListener;
+import com.moblyo.market.interfaces.SortCouponsByDistanceCallback;
+import com.moblyo.market.location.GetLocationFromGoogleClient;
 import com.moblyo.market.model.ResponseGetBrandedCoupons;
 import com.moblyo.market.model.ResponseGetCategories;
 import com.moblyo.market.model.ResponseGetCoupons;
@@ -52,6 +54,7 @@ public class HomeScreenActivity extends BaseActivity implements OnFragmentAttach
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        isSplash = true;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
@@ -78,6 +81,16 @@ public class HomeScreenActivity extends BaseActivity implements OnFragmentAttach
         }catch (Exception e){
 
         }
+
+        getLocationFromGoogleClient = new GetLocationFromGoogleClient(HomeScreenActivity.this, null, new SortCouponsByDistanceCallback() {
+            @Override
+            public void refreshData(boolean refresh) {
+                if(mOnPassValueToFragmentListener != null) {
+                    mOnFragmentAttachedListener.isDataSort(true);
+                }
+            }
+        });
+        getLocationFromGoogleClient.checkLocationSettings();
     }
 
     @Override
@@ -308,6 +321,13 @@ public class HomeScreenActivity extends BaseActivity implements OnFragmentAttach
     public void isMapTapped(int mapIndex) {
         if(mOnPassValueToFragmentListener!=null){
             mOnPassValueToFragmentListener.isMapSelectedToFragment(mapIndex);
+        }
+    }
+
+    @Override
+    public void isDataSort(boolean sort) {
+        if(mOnPassValueToFragmentListener!=null){
+            mOnPassValueToFragmentListener.sortData(sort);
         }
     }
 }

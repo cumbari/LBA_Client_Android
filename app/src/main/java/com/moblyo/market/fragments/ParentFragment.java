@@ -60,4 +60,9 @@ public class ParentFragment extends Fragment implements OnPassValueToFragmentLis
 		mListener.isMapTapped(mapSelectedIndex);
 
 	}
+
+	@Override
+	public void sortData(boolean sortData) {
+		mListener.isDataSort(sortData);
+	}
 }
