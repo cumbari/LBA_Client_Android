@@ -1,6 +1,7 @@
 package com.moblyo.market;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -61,7 +62,6 @@ public class HomeScreenActivity extends BaseActivity implements OnFragmentAttach
         setContentView(R.layout.activity_home_screen);
 
         try {
-
             initialiseResources();
             extractDataFromLocal();
             edit_icon.setVisibility(View.GONE);
@@ -89,7 +89,7 @@ public class HomeScreenActivity extends BaseActivity implements OnFragmentAttach
             @Override
             public void refreshData(boolean refresh) {
                 ++isSyncDataCounter;
-                if(mOnPassValueToFragmentListener != null && isSyncDataCounter > 2) {
+                if(mOnPassValueToFragmentListener != null && isSyncDataCounter > 1) {
                     mOnFragmentAttachedListener.isDataSort(refresh);
                 }
             }

@@ -17,7 +17,12 @@ import android.graphics.drawable.StateListDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.format.DateUtils;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
@@ -247,10 +252,6 @@ public class AppUtility {
 
 	public String getTimerCountDownValue(Context c, int counterMin, int counterSec){
 		return c.getResources().getString(R.string.use_deal_within)+" "+pad(counterMin)+":"+pad(counterSec)+" "+c.getResources().getString(R.string.min);
-	}
-
-	public String getTimerCountDownValueForViewOpt(long day, long hour, long min, long sec){
-		return pad((int)day)+":"+pad((int)hour)+":"+pad((int)min)+":"+pad((int)sec);
 	}
 
 	public void setLocale() {

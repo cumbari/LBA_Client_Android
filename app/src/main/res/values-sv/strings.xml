@@ -153,4 +153,12 @@
     <string name="logged_out_text">logga ut!</string>
     <string name="not_connected_to_facebook">Du har loggat ut !</string>
 
+    <string name="coupon_expired_message"> Kupong har löpt ut ! </string>
+    <string name="load_data_message"> Läser Kupong data ... Vänta ... </string>
+    <string name="days">Dagar</string>
+    <string name="hours">timmar</string>
+    <string name="minutes">Protokoll</string>
+    <string name="seconds">sekunder</string>
+
+
 </resources>

@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -77,6 +80,21 @@ public class DetailedCouponActivity extends BaseActivity
     //Main Holder
     private ImageView detail_coupon_image;
     private Button detail_coupon_distance;
+    //Timer values
+    private LinearLayout detail_coupon_countdown_timer;
+    private TextView detail_coupon_countdown_timer_days_value;
+    private TextView detail_coupon_countdown_timer_hr_value;
+    private TextView detail_coupon_countdown_timer_min_value;
+    private TextView detail_coupon_countdown_timer_sec_value;
+
+    private TextView detail_coupon_countdown_timer_label;
+    private TextView detail_coupon_countdown_timer_days_label;
+    private TextView detail_coupon_countdown_timer_hr_label;
+    private TextView detail_coupon_countdown_timer_min_label;
+    private TextView detail_coupon_countdown_timer_sec_label;
+
+    //Timer values
+
     private TextView detail_coupon_title;
     private TextView detail_coupon_slogan;
     private TextView detail_coupon_address;
@@ -176,11 +194,13 @@ public class DetailedCouponActivity extends BaseActivity
                 getCouponsDetail = extractDataFromResponse(resultModel);
                 if(getCouponsDetail!=null) {
                     couponData = getCouponsDetail.getCoupon();
+//                    couponData.setValidFrom("2016-06-07 00:00"); //testing
+//                    couponData.setEndOfPublishing("2016-06-11 00:00");
+
                     storeData = getCouponsDetail.getStoreInfo();
                     if(couponData != null && storeData != null) {
                         setDetailedData();
                         generateActivateDealDialog();
-
                         //check if this coupon is already used
                         //offerType:= "ONCE"|"MANY"|"ADVERTISE"
                         if (checkIfCouponIsAlreayUsed()) {
@@ -215,14 +235,40 @@ public class DetailedCouponActivity extends BaseActivity
     }
 
     private void showCDTimer(){
-        detail_coupon_validity.setText(timeString +"\n"+getResources().getString(R.string.offer_expires_in));
+
+        detail_coupon_countdown_timer = (LinearLayout) findViewById(R.id.detail_coupon_countdown_timer);
+        detail_coupon_countdown_timer_days_value = (TextView) findViewById(R.id.detail_coupon_countdown_timer_days_value);
+        detail_coupon_countdown_timer_hr_value = (TextView) findViewById(R.id.detail_coupon_countdown_timer_hr_value);
+        detail_coupon_countdown_timer_min_value = (TextView) findViewById(R.id.detail_coupon_countdown_timer_min_value);
+        detail_coupon_countdown_timer_sec_value = (TextView) findViewById(R.id.detail_coupon_countdown_timer_sec_value);
+
+        detail_coupon_countdown_timer_label = (TextView) findViewById(R.id.detail_coupon_countdown_timer_label);
+        detail_coupon_countdown_timer_days_label = (TextView) findViewById(R.id.detail_coupon_countdown_timer_days_label);
+        detail_coupon_countdown_timer_hr_label = (TextView) findViewById(R.id.detail_coupon_countdown_timer_hr_label);
+        detail_coupon_countdown_timer_min_label = (TextView) findViewById(R.id.detail_coupon_countdown_timer_min_label);
+        detail_coupon_countdown_timer_sec_label = (TextView) findViewById(R.id.detail_coupon_countdown_timer_sec_label);
+
+        typeFaceClass.setTypefaceBold(detail_coupon_countdown_timer_days_value);
+        typeFaceClass.setTypefaceBold(detail_coupon_countdown_timer_hr_value);
+        typeFaceClass.setTypefaceBold(detail_coupon_countdown_timer_min_value);
+        typeFaceClass.setTypefaceBold(detail_coupon_countdown_timer_sec_value);
+
+        typeFaceClass.setTypefaceNormal(detail_coupon_countdown_timer_days_label);
+        typeFaceClass.setTypefaceNormal(detail_coupon_countdown_timer_hr_label);
+        typeFaceClass.setTypefaceNormal(detail_coupon_countdown_timer_min_label);
+        typeFaceClass.setTypefaceNormal(detail_coupon_countdown_timer_sec_label);
+        typeFaceClass.setTypefaceMed(detail_coupon_countdown_timer_label);
+
+
+        detail_coupon_distance.setVisibility(View.INVISIBLE);
+        detail_coupon_countdown_timer.setVisibility(View.VISIBLE);
+
         //Time left from End of Publishing from now
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         try {
             Date endDateForTimer = sdf.parse(couponData.getEndOfPublishing());
             seconds = endDateForTimer.getTime()/1000 - System.currentTimeMillis()/1000;;
-           // seconds =  1474569000000l/1000 - System.currentTimeMillis()/1000; //testing
-              startValidUntilTimer();
+            startValidUntilTimer();
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -244,7 +290,12 @@ public class DetailedCouponActivity extends BaseActivity
                         days = seconds / (24 * 60 * 60 );
                         seconds -- ;
                         if(shouldShowTimer) {
-                            detail_coupon_distance.setText(appUtility.getTimerCountDownValueForViewOpt(days, hours, minutes, diffSeconds));
+                            detail_coupon_distance.setVisibility(View.INVISIBLE);
+                            detail_coupon_countdown_timer.setVisibility(View.VISIBLE);
+                            detail_coupon_countdown_timer_days_value.setText(appUtility.pad((int) days));
+                            detail_coupon_countdown_timer_hr_value.setText(appUtility.pad((int) hours));
+                            detail_coupon_countdown_timer_min_value.setText(appUtility.pad((int) minutes));
+                            detail_coupon_countdown_timer_sec_value.setText(appUtility.pad((int) diffSeconds));
                         }
                     }else{
                         //Coupon is expired
@@ -252,6 +303,8 @@ public class DetailedCouponActivity extends BaseActivity
                             handlerValidUntil.removeCallbacks(runnableValidUntil);
                             handlerValidUntil = null;
                         }
+                        detail_coupon_distance.setVisibility(View.VISIBLE);
+                        detail_coupon_countdown_timer.setVisibility(View.INVISIBLE);
                         detail_coupon_distance.setText(calculateDistanceForCoupon().replace(",","."));
                         Toast.makeText(DetailedCouponActivity.this,getResources().getString(R.string.coupon_expired_message),Toast.LENGTH_SHORT).show();
                     }
@@ -287,8 +340,13 @@ public class DetailedCouponActivity extends BaseActivity
                     else
                         shouldShowTimer = !shouldShowTimer;
 
-                    if(!shouldShowTimer) {
+                    if(!shouldShowTimer || seconds <= 0) {
+                        detail_coupon_distance.setVisibility(View.VISIBLE);
+                        detail_coupon_countdown_timer.setVisibility(View.INVISIBLE);
                         detail_coupon_distance.setText(calculateDistanceForCoupon().replace(",","."));
+                    }else{
+                        detail_coupon_distance.setVisibility(View.INVISIBLE);
+                        detail_coupon_countdown_timer.setVisibility(View.VISIBLE);
                     }
 
                 } catch (Exception e) {
@@ -525,7 +583,15 @@ public class DetailedCouponActivity extends BaseActivity
         }
 
         String endOfPublishing = couponData.getEndOfPublishing().substring(0,10);
+
         if(limitPeriodLists !=null) {
+        /*    LimitPeriodList ll = new LimitPeriodList();
+            ll.setEndTime(14);
+            ll.setStartTime(10);
+            ll.setValidDay("MON_TO_FRI");
+            limitPeriodLists.add(ll); */
+
+
             for (int loop = 0; loop < limitPeriodLists.size(); loop++) {
                 LimitPeriodList dictForLimitPeriodList = limitPeriodLists.get(loop);
                 validDay = dictForLimitPeriodList.getValidDay();
@@ -554,7 +620,7 @@ public class DetailedCouponActivity extends BaseActivity
                 startTime = dictForLimitPeriodList.getStartTime();
                 endTime = dictForLimitPeriodList.getEndTime();
                 timeString = validDayInLanguage +"\n";
-                timeString =  startTime + "-" + endTime;
+                timeString +=  startTime + "-" + endTime;
             }
         }
         timeString += getResources().getString(R.string.valid_until) +" " + endOfPublishing;

@@ -155,5 +155,12 @@
     <string name="posting_data">Daten werden an Facebook übermittelt</string>
     <string name="logged_out_text">Ausloggen</string>
     <string name="not_connected_to_facebook">Nicht mit Facebook verbunden</string>
-    
+
+    <string name="coupon_expired_message"> Coupon ist abgelaufen !</string>
+    <string name="load_data_message"> Laden Coupon-Daten ... Bitte warten Sie ... </string>
+    <string name="days">Tage</string>
+    <string name="hours">Stunden</string>
+    <string name="minutes">Minuten</string>
+    <string name="seconds">Sekunden</string>
+
 </resources>

@@ -158,6 +158,10 @@
 
     <string name="coupon_expired_message">Coupon is Expired!</string>
     <string name="load_data_message">Loading Coupon Data...Please wait...</string>
+    <string name="days">Days</string>
+    <string name="hours">Hours</string>
+    <string name="minutes">Minutes</string>
+    <string name="seconds">Seconds</string>
 
 
 </resources>
