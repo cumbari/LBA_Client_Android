@@ -250,7 +250,7 @@ public class AppUtility {
 	}
 
 	public String getTimerCountDownValueForViewOpt(long day, long hour, long min, long sec){
-		return pad((int)day)+":"+pad((int)hour) + pad((int)min)+":"+pad((int)sec);
+		return pad((int)day)+":"+pad((int)hour)+":"+pad((int)min)+":"+pad((int)sec);
 	}
 
 	public void setLocale() {

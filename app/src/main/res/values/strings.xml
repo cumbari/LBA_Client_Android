@@ -155,4 +155,9 @@
     <string name="facebook_app_id">457826594364279</string>
     <string name="google_maps_key_komal"> AIzaSyBpKwQRdik7RZj1DycTmJAQIsYx3TMJ9Bs</string>
 
+
+    <string name="coupon_expired_message">Coupon is Expired!</string>
+    <string name="load_data_message">Loading Coupon Data...Please wait...</string>
+
+
 </resources>

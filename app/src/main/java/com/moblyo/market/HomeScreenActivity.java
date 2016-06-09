@@ -45,6 +45,8 @@ public class HomeScreenActivity extends BaseActivity implements OnFragmentAttach
 
     private int selectedTab;
     private boolean isEditTapped;
+    private int isSyncDataCounter;//Location change is called 2 times
+
 
     private OnFragmentAttachedListener mOnFragmentAttachedListener;
     private OnPassValueToFragmentListener mOnPassValueToFragmentListener;
@@ -59,6 +61,7 @@ public class HomeScreenActivity extends BaseActivity implements OnFragmentAttach
         setContentView(R.layout.activity_home_screen);
 
         try {
+
             initialiseResources();
             extractDataFromLocal();
             edit_icon.setVisibility(View.GONE);
@@ -85,8 +88,9 @@ public class HomeScreenActivity extends BaseActivity implements OnFragmentAttach
         getLocationFromGoogleClient = new GetLocationFromGoogleClient(HomeScreenActivity.this, null, new SortCouponsByDistanceCallback() {
             @Override
             public void refreshData(boolean refresh) {
-                if(mOnPassValueToFragmentListener != null) {
-                    mOnFragmentAttachedListener.isDataSort(true);
+                ++isSyncDataCounter;
+                if(mOnPassValueToFragmentListener != null && isSyncDataCounter > 2) {
+                    mOnFragmentAttachedListener.isDataSort(refresh);
                 }
             }
         });
@@ -103,7 +107,7 @@ public class HomeScreenActivity extends BaseActivity implements OnFragmentAttach
         }
     }
 
-    private void extractDataFromLocal() {
+    public void extractDataFromLocal() {
         Gson gson = new Gson();
         JSONObject onj = null;
 
@@ -134,6 +138,7 @@ public class HomeScreenActivity extends BaseActivity implements OnFragmentAttach
 
     private void initialiseResources() {
 
+        isSyncDataCounter = 0;
         isEditTapped = false;
         mOnFragmentAttachedListener = HomeScreenActivity.this;
 

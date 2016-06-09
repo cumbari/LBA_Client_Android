@@ -37,7 +37,7 @@ public class GetLocationFromGoogleClient  implements
     /**
      * The desired interval for location updates. Inexact. Updates may be more or less frequent.
      */
-    public static final long UPDATE_INTERVAL_IN_MILLISECONDS = 10000;
+    public static final long UPDATE_INTERVAL_IN_MILLISECONDS = 20*1000;
 
     /**
      * The fastest rate for active location updates. Exact. Updates will never be more frequent
@@ -117,7 +117,7 @@ public class GetLocationFromGoogleClient  implements
         // inexact. You may not receive updates at all if no location sources are available, or
         // you may receive them slower than requested. You may also receive updates faster than
         // requested if other applications are requesting location at a faster interval.
-        mLocationRequest.setInterval(UPDATE_INTERVAL_IN_MILLISECONDS);
+        //mLocationRequest.setInterval(UPDATE_INTERVAL_IN_MILLISECONDS);
 
         if(mSortCouponsByDistanceCallback != null) {
             mLocationRequest.setSmallestDisplacement(300);

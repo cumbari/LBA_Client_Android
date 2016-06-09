@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.moblyo.market.BaseActivity;
+import com.moblyo.market.R;
 import com.moblyo.market.interfaces.OnLoadMoreListener;
 import com.moblyo.market.model.CouponViewStatistic;
 import com.moblyo.market.utils.APPConstants;
@@ -24,7 +25,6 @@ public class CustomAsyncTask extends AsyncTask<Void, Void, Integer>
     private AppUtility appUtility;
     private JsonMethods jsonMetods;
     private OnLoadMoreListener  callback;
-    private final String titleProgress="", msgProgress="\nLoading Coupon Data...Please wait...";
     private SharedPreferenceUtil sharedPreferenceUtil;
 
     private float latitude ;
@@ -116,7 +116,7 @@ public class CustomAsyncTask extends AsyncTask<Void, Void, Integer>
     protected void onPreExecute() {
         super.onPreExecute();
         if (showProgress){
-            progressDialog = ProgressDialog.show(mContext, titleProgress, msgProgress, false);
+            progressDialog = ProgressDialog.show(mContext, "", mContext.getResources().getString(R.string.load_data_message), false);
             progressDialog.setCancelable(false);
         }
 

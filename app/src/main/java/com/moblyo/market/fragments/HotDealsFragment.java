@@ -1,5 +1,6 @@
 package com.moblyo.market.fragments;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.moblyo.market.DetailedCouponActivity;
 import com.moblyo.market.HomeScreenActivity;
+import com.moblyo.market.LanguageActivity;
 import com.moblyo.market.MapsActivity;
 import com.moblyo.market.R;
 import com.moblyo.market.adapter.MyHotDealsRecyclerViewAdapter;
@@ -27,6 +29,7 @@ import com.moblyo.market.model.ListOfCoupons;
 import com.moblyo.market.model.ListOfStores;
 import com.moblyo.market.model.ResponseGetCoupons;
 import com.moblyo.market.sync.CustomAsyncTask;
+import com.moblyo.market.sync.SyncApplicationData;
 import com.moblyo.market.utils.APPConstants;
 import com.moblyo.market.utils.RecyclerItemClickListener;
 import com.moblyo.market.utils.SharedPrefKeys;
@@ -67,6 +70,8 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
 
     private int valueToDeductFromTotalListItems = 0;
     private ProgressBar data_load_progress;
+    private ProgressDialog progressDialog;
+    private boolean dataSyncingInProgress = false;
 
     public HotDealsFragment() {
     }
@@ -276,6 +281,7 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
         new CustomAsyncTask(getActivity(), APPConstants.FindCouponsWebservice, filterString, batchNo,showProgress, new OnLoadMoreListener<String>() {
             @Override
             public void onLoadMore(String resultModel) {
+                dataSyncingInProgress = false;
                 try {
                     data_load_progress.setVisibility(View.GONE);
                     setSearchData(resultModel);
@@ -522,9 +528,37 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
     public void sortData(boolean sortData) {
         if(sortData){
             if (isSearch) {
-                syncCouponDataWhileSearching(1,true);
+                if(!dataSyncingInProgress) {
+                    dataSyncingInProgress = true;
+                    syncCouponDataWhileSearching(1, true);
+                }
             } else {
-                  syncCouponData(1,true);
+                if(!dataSyncingInProgress) {
+                    dataSyncingInProgress = true;
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mActivity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressDialog = ProgressDialog.show(mActivity, getResources().getString(R.string.progress_title), getResources().getString(R.string.progress_message), false);
+                                    progressDialog.setCancelable(false);
+                                }
+                            });
+                            new SyncApplicationData(sharedPreferenceUtil).syncData();
+                            mActivity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    dataSyncingInProgress = false;
+                                    ((HomeScreenActivity) mActivity).extractDataFromLocal();
+                                    setHotDealData();//again set hot deals array list and then notify
+                                    mMyHotDealsRecyclerViewAdapter.notifyDataSetChanged();
+                                    progressDialog.dismiss();
+                                }
+                            });
+                        }
+                    }).start();
+                }
             }
         }
     }

@@ -196,8 +196,9 @@ public class DetailedCouponActivity extends BaseActivity
                             }
                         }
 
-                        String viewOpt = couponData.getViewOpt();
-                        if (viewOpt.equals("CD") && distanceToSendForUseCoupon>=300) {
+                        //Check if this coupon is Advertised coupon or not
+                        String viewOpt = couponData.getViewOpt();//"CD";//testing
+                        if (!couponData.getOfferType().equals("ADVERTISE") && viewOpt.equals("CD") && distanceToSendForUseCoupon>=300) {
                             shouldShowTimer = true;
                             showCDTimer();
                             startTimerToToggleForViewOpt();
@@ -214,13 +215,14 @@ public class DetailedCouponActivity extends BaseActivity
     }
 
     private void showCDTimer(){
-        detail_coupon_validity.setText(getResources().getString(R.string.offer_expires_in));
+        detail_coupon_validity.setText(timeString +"\n"+getResources().getString(R.string.offer_expires_in));
         //Time left from End of Publishing from now
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         try {
             Date endDateForTimer = sdf.parse(couponData.getEndOfPublishing());
-            seconds = System.currentTimeMillis() - endDateForTimer.getTime();
-            startValidUntilTimer();
+            seconds = endDateForTimer.getTime()/1000 - System.currentTimeMillis()/1000;;
+           // seconds =  1474569000000l/1000 - System.currentTimeMillis()/1000; //testing
+              startValidUntilTimer();
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -236,15 +238,22 @@ public class DetailedCouponActivity extends BaseActivity
             public void run() {
                 try{
                     if(seconds > 0 ) {
+                        long diffSeconds = seconds % 60;
+                        minutes = seconds / 60  % 60;
+                        hours = seconds / (60 * 60 ) % 24;
+                        days = seconds / (24 * 60 * 60 );
                         seconds -- ;
-                        hours = seconds / 3600;
-                        days = hours/24;
-                        hours = hours%24;
-                        minutes = (seconds % 3600) / 60;
-                        seconds = (seconds %3600) % 60;
                         if(shouldShowTimer) {
-                            detail_coupon_distance.setText(appUtility.getTimerCountDownValueForViewOpt(days, hours, minutes, seconds));
+                            detail_coupon_distance.setText(appUtility.getTimerCountDownValueForViewOpt(days, hours, minutes, diffSeconds));
                         }
+                    }else{
+                        //Coupon is expired
+                        if (handlerValidUntil != null) {
+                            handlerValidUntil.removeCallbacks(runnableValidUntil);
+                            handlerValidUntil = null;
+                        }
+                        detail_coupon_distance.setText(calculateDistanceForCoupon().replace(",","."));
+                        Toast.makeText(DetailedCouponActivity.this,getResources().getString(R.string.coupon_expired_message),Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -267,6 +276,7 @@ public class DetailedCouponActivity extends BaseActivity
         runnableForToggling = new Runnable(){
             public void run() {
                 try{
+
                     if (distanceToSendForUseCoupon<300) {
                         if (handlerForToggling != null) {
                             handlerForToggling.removeCallbacks(runnableForToggling);

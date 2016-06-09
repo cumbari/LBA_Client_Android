@@ -23,6 +23,7 @@
         android:layout_marginTop="10dip"
         android:background="@drawable/detailed_normal"
         android:textColor="@color/white"
+        android:textSize="@dimen/very_large_text"
         android:layout_alignParentBottom="true"
         android:visibility="invisible"
         android:text=""/>
