@@ -46,7 +46,6 @@ public class HomeScreenActivity extends BaseActivity implements OnFragmentAttach
 
     private int selectedTab;
     private boolean isEditTapped;
-    private int isSyncDataCounter;//Location change is called 2 times
 
 
     private OnFragmentAttachedListener mOnFragmentAttachedListener;
@@ -88,8 +87,7 @@ public class HomeScreenActivity extends BaseActivity implements OnFragmentAttach
         getLocationFromGoogleClient = new GetLocationFromGoogleClient(HomeScreenActivity.this, null, new SortCouponsByDistanceCallback() {
             @Override
             public void refreshData(boolean refresh) {
-                ++isSyncDataCounter;
-                if(mOnPassValueToFragmentListener != null && isSyncDataCounter > 1) {
+                if(mOnPassValueToFragmentListener != null) {
                     mOnFragmentAttachedListener.isDataSort(refresh);
                 }
             }
@@ -137,8 +135,6 @@ public class HomeScreenActivity extends BaseActivity implements OnFragmentAttach
     }
 
     private void initialiseResources() {
-
-        isSyncDataCounter = 0;
         isEditTapped = false;
         mOnFragmentAttachedListener = HomeScreenActivity.this;
 

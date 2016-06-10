@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -45,6 +47,8 @@ import java.util.Collections;
 public class HotDealsFragment extends ParentFragment implements SearchView.OnQueryTextListener {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
+    private static final long TIME_INTERVAL_FOR_SORT = 2*60000;//2 min
+
     private int mColumnCount = 1;
     private ArrayList<ListOfCoupons> originalhotDealsArray;
     private ArrayList<ListOfCoupons> hotDealsArray;
@@ -73,6 +77,9 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
     private ProgressDialog progressDialog;
     private boolean dataSyncingInProgress = false;
 
+    private Handler handler;
+    private Runnable runnable;
+
     public HotDealsFragment() {
     }
 
@@ -86,6 +93,47 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+       startTimerForSort();
+    }
+
+    private void startTimerForSort(){
+        removeTimer();
+
+        handler = new Handler();
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if(!dataSyncingInProgress) {
+                        setDataAgainOnResume();
+                    }
+                    if (handler != null)
+                        handler.postDelayed(this, TIME_INTERVAL_FOR_SORT);
+                }catch(Exception e){
+
+                }
+            }
+        };
+        handler.postDelayed(runnable, TIME_INTERVAL_FOR_SORT);
+    }
+
+    private void removeTimer() {
+        if (handler != null) {
+            handler.removeCallbacks(runnable);
+            handler = null;
+            runnable = null;
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        removeTimer();
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
@@ -94,8 +142,19 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        removeTimer();
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
+        startTimerForSort();
+        setDataAgainOnResume();
+    }
+
+    private void setDataAgainOnResume() {
         try {
             if (isSearch) {
                 if (mMyHotDealsSearchRecyclerViewAdapter != null) {
@@ -526,7 +585,7 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
 
     @Override
     public void sortData(boolean sortData) {
-        if(sortData){
+        if(!sortData){
             if (isSearch) {
                 if(!dataSyncingInProgress) {
                     dataSyncingInProgress = true;
@@ -541,7 +600,7 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
                             mActivity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    progressDialog = ProgressDialog.show(mActivity, getResources().getString(R.string.progress_title), getResources().getString(R.string.progress_message), false);
+                                    progressDialog = ProgressDialog.show(mActivity, "", getResources().getString(R.string.load_data_message), false);
                                     progressDialog.setCancelable(false);
                                 }
                             });

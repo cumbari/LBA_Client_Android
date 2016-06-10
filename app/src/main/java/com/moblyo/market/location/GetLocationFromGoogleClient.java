@@ -33,11 +33,16 @@ public class GetLocationFromGoogleClient  implements
 
     private Activity mActivity;
 
+    /**
+     * The desired location distance parameter for location updates.
+     */
+    public static final long LOCATION_DISTANCE_PARAMETER = 300;
+
 
     /**
      * The desired interval for location updates. Inexact. Updates may be more or less frequent.
      */
-    public static final long UPDATE_INTERVAL_IN_MILLISECONDS = 20*1000;
+    public static final long UPDATE_INTERVAL_IN_MILLISECONDS = 2*60000;
 
     /**
      * The fastest rate for active location updates. Exact. Updates will never be more frequent
@@ -120,7 +125,7 @@ public class GetLocationFromGoogleClient  implements
         //mLocationRequest.setInterval(UPDATE_INTERVAL_IN_MILLISECONDS);
 
         if(mSortCouponsByDistanceCallback != null) {
-            mLocationRequest.setSmallestDisplacement(300);
+             mLocationRequest.setSmallestDisplacement(LOCATION_DISTANCE_PARAMETER);
         }
         // Sets the fastest rate for active location updates. This interval is exact, and your
         // application will never receive updates faster than this value.
@@ -228,17 +233,33 @@ public class GetLocationFromGoogleClient  implements
     @Override
     public void onLocationChanged(Location location) {
         if (location != null) {
+            if(mSortCouponsByDistanceCallback != null) {
+                if (SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.PREVIOUS_LATITUDE, 0f) != location.getLatitude()
+                        || SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.PREVIOUS_LONGITUDE, 0f) != location.getLongitude()) {
+
+                    double lat1 = SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.PREVIOUS_LATITUDE, 0f);
+                    double lng1 = SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.PREVIOUS_LONGITUDE, 0f);
+                    double distance = new Coordinate().distance(
+                            lat1,
+                            lng1,
+                            location.getLatitude(),
+                            location.getLongitude(),
+                            Coordinate.Unit.Meter);
+
+                    if (distance >= LOCATION_DISTANCE_PARAMETER) {
+                        //sync new data
+                        SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.PREVIOUS_LATITUDE,(float)location.getLatitude());
+                        SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.PREVIOUS_LONGITUDE,(float)location.getLongitude());
+                        mSortCouponsByDistanceCallback.refreshData(false);
+                    }
+                }
+            }
             SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.CURRENT_LATITUDE,(float)location.getLatitude());
             SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.CURRENT_LONGITUDE,(float)location.getLongitude());
 
             if(SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.IS_CURRENT_POSITION, true) || SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.WEBSERVICE_LATITUDE,0f) == 0) {
                 SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.WEBSERVICE_LATITUDE,SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.CURRENT_LATITUDE,0f));
                 SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.WEBSERVICE_LONGITUDE,SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.CURRENT_LONGITUDE,0f));
-            }
-
-            if(mSortCouponsByDistanceCallback != null){
-                //300m location is changed
-                mSortCouponsByDistanceCallback.refreshData(true);
             }
 
             if(!isSyncStarted && mSyncAllDataCallback != null){

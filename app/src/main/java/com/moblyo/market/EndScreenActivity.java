@@ -22,6 +22,7 @@ public class EndScreenActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(handler != null){
                     handler.removeCallbacks(runnable);
+                    handler = null;
                 }
                 moveToHomeScreen();
             }

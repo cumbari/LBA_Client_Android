@@ -72,6 +72,9 @@ public class SplashActivity extends BaseActivity {
                         sharedPreferenceUtil.saveData(SharedPrefKeys.WEBSERVICE_LATITUDE,sharedPreferenceUtil.getData(SharedPrefKeys.CURRENT_LATITUDE,0f));
                         sharedPreferenceUtil.saveData(SharedPrefKeys.WEBSERVICE_LONGITUDE,sharedPreferenceUtil.getData(SharedPrefKeys.CURRENT_LONGITUDE,0f));
                     }
+                    //For 300m location change issue
+                    sharedPreferenceUtil.saveData(SharedPrefKeys.PREVIOUS_LATITUDE,sharedPreferenceUtil.getData(SharedPrefKeys.CURRENT_LATITUDE,0f));
+                    sharedPreferenceUtil.saveData(SharedPrefKeys.PREVIOUS_LONGITUDE,sharedPreferenceUtil.getData(SharedPrefKeys.CURRENT_LONGITUDE,0f));
 
                     DownloadDatabase task = new DownloadDatabase();
                     task.execute("");
