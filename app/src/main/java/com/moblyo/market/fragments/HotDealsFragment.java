@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.moblyo.market.DetailedCouponActivity;
@@ -35,6 +36,7 @@ import com.moblyo.market.sync.SyncApplicationData;
 import com.moblyo.market.utils.APPConstants;
 import com.moblyo.market.utils.RecyclerItemClickListener;
 import com.moblyo.market.utils.SharedPrefKeys;
+import com.moblyo.market.utils.SharedPreferenceUtil;
 import com.moblyo.market.utils.SortDataTableByDistanceFormatter;
 import com.moblyo.market.utils.TCLogger;
 
@@ -48,6 +50,13 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private static final long TIME_INTERVAL_FOR_SORT = 2*60000;//2 min
+    private static final long TIME_INTERVAL_FOR_SYNC = 5000;//5sec check
+
+    /**
+     * The desired location distance parameter for location updates.
+     */
+    private static final long LOCATION_DISTANCE_PARAMETER = 300;
+
 
     private int mColumnCount = 1;
     private ArrayList<ListOfCoupons> originalhotDealsArray;
@@ -80,6 +89,9 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
     private Handler handler;
     private Runnable runnable;
 
+    private Handler handlerForSync;
+    private Runnable runnableForSync;
+
     public HotDealsFragment() {
     }
 
@@ -92,45 +104,80 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
         return fragment;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-       startTimerForSort();
-    }
-
-    private void startTimerForSort(){
-        removeTimer();
+    private void startTimerForSortAndSync(){
+        removeTimers();
 
         handler = new Handler();
         runnable = new Runnable() {
             @Override
             public void run() {
                 try {
+                    Toast.makeText(mActivity,"Sort timer sort data ",Toast.LENGTH_SHORT).show();
                     if(!dataSyncingInProgress) {
                         setDataAgainOnResume();
                     }
                     if (handler != null)
                         handler.postDelayed(this, TIME_INTERVAL_FOR_SORT);
                 }catch(Exception e){
-
                 }
             }
         };
         handler.postDelayed(runnable, TIME_INTERVAL_FOR_SORT);
+
+
+
+        handlerForSync = new Handler();
+        runnableForSync = new Runnable() {
+            @Override
+            public void run() {
+                try {
+
+                    double lat = SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.PREVIOUS_LATITUDE, 0f);
+                    double lng = SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.PREVIOUS_LONGITUDE, 0f);
+
+                    double currentLat = SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.CURRENT_LATITUDE, 0f);
+                    double currentLng = SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.CURRENT_LONGITUDE, 0f);
+
+                    double distance = new Coordinate().distance(
+                            lat,
+                            lng,
+                            currentLat,
+                            currentLng,
+                            Coordinate.Unit.Meter);
+
+                    Toast.makeText(mActivity,"On timer Repeat distance "+distance,Toast.LENGTH_LONG).show();
+
+                    if (distance >= (LOCATION_DISTANCE_PARAMETER))
+                    {
+                        Toast.makeText(mActivity,"Sync timer sync data ",Toast.LENGTH_SHORT).show();
+                        SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.PREVIOUS_LATITUDE,(float)currentLat);
+                        SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.PREVIOUS_LONGITUDE,(float)currentLng);
+                        sortData(false);
+                    }
+
+                    if (handlerForSync != null)
+                        handlerForSync.postDelayed(this, TIME_INTERVAL_FOR_SYNC);
+                }catch(Exception e){
+                    dataSyncingInProgress = false;
+                }
+            }
+        };
+        handlerForSync.postDelayed(runnableForSync, TIME_INTERVAL_FOR_SYNC);
+
     }
 
-    private void removeTimer() {
+    private void removeTimers() {
         if (handler != null) {
             handler.removeCallbacks(runnable);
             handler = null;
             runnable = null;
         }
-    }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        removeTimer();
+        if (handlerForSync != null) {
+            handlerForSync.removeCallbacks(runnableForSync);
+            handlerForSync = null;
+            runnableForSync = null;
+        }
     }
 
     @Override
@@ -144,13 +191,13 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
     @Override
     public void onPause() {
         super.onPause();
-        removeTimer();
+        removeTimers();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        startTimerForSort();
+        startTimerForSortAndSync();
         setDataAgainOnResume();
     }
 
@@ -191,6 +238,7 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
         View view = inflater.inflate(R.layout.fragment_recycler_view, container, false);
 
         Context context = view.getContext();
+        dataSyncingInProgress = false;
         recyclerView = (RecyclerView) view.findViewById(R.id.data_listview);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setHasFixedSize(true);

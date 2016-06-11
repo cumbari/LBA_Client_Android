@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.IntentSender;
 import android.location.Location;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -34,15 +35,9 @@ public class GetLocationFromGoogleClient  implements
     private Activity mActivity;
 
     /**
-     * The desired location distance parameter for location updates.
-     */
-    public static final long LOCATION_DISTANCE_PARAMETER = 300;
-
-
-    /**
      * The desired interval for location updates. Inexact. Updates may be more or less frequent.
      */
-    public static final long UPDATE_INTERVAL_IN_MILLISECONDS = 2*60000;
+    public static final long UPDATE_INTERVAL_IN_MILLISECONDS = 8000;
 
     /**
      * The fastest rate for active location updates. Exact. Updates will never be more frequent
@@ -122,10 +117,13 @@ public class GetLocationFromGoogleClient  implements
         // inexact. You may not receive updates at all if no location sources are available, or
         // you may receive them slower than requested. You may also receive updates faster than
         // requested if other applications are requesting location at a faster interval.
-        //mLocationRequest.setInterval(UPDATE_INTERVAL_IN_MILLISECONDS);
+        //
+        mLocationRequest.setInterval(UPDATE_INTERVAL_IN_MILLISECONDS);
+        mLocationRequest.setFastestInterval(FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS);
 
         if(mSortCouponsByDistanceCallback != null) {
-             mLocationRequest.setSmallestDisplacement(LOCATION_DISTANCE_PARAMETER);
+
+            //mLocationRequest.setSmallestDisplacement(LOCATION_DISTANCE_PARAMETER);
         }
         // Sets the fastest rate for active location updates. This interval is exact, and your
         // application will never receive updates faster than this value.
@@ -233,27 +231,7 @@ public class GetLocationFromGoogleClient  implements
     @Override
     public void onLocationChanged(Location location) {
         if (location != null) {
-            if(mSortCouponsByDistanceCallback != null) {
-                if (SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.PREVIOUS_LATITUDE, 0f) != location.getLatitude()
-                        || SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.PREVIOUS_LONGITUDE, 0f) != location.getLongitude()) {
 
-                    double lat1 = SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.PREVIOUS_LATITUDE, 0f);
-                    double lng1 = SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.PREVIOUS_LONGITUDE, 0f);
-                    double distance = new Coordinate().distance(
-                            lat1,
-                            lng1,
-                            location.getLatitude(),
-                            location.getLongitude(),
-                            Coordinate.Unit.Meter);
-
-                    if (distance >= LOCATION_DISTANCE_PARAMETER) {
-                        //sync new data
-                        SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.PREVIOUS_LATITUDE,(float)location.getLatitude());
-                        SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.PREVIOUS_LONGITUDE,(float)location.getLongitude());
-                        mSortCouponsByDistanceCallback.refreshData(false);
-                    }
-                }
-            }
             SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.CURRENT_LATITUDE,(float)location.getLatitude());
             SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.CURRENT_LONGITUDE,(float)location.getLongitude());
 
@@ -262,6 +240,30 @@ public class GetLocationFromGoogleClient  implements
                 SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.WEBSERVICE_LONGITUDE,SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.CURRENT_LONGITUDE,0f));
             }
 
+            /*  if(mSortCouponsByDistanceCallback != null) {
+                //if (SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.PREVIOUS_LATITUDE, 0f) != location.getLatitude()
+                //        || SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.PREVIOUS_LONGITUDE, 0f) != location.getLongitude()) {
+
+                  double lat1 = SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.PREVIOUS_LATITUDE, 0f);
+                    double lng1 = SharedPreferenceUtil.getInstance(mActivity).getData(SharedPrefKeys.PREVIOUS_LONGITUDE, 0f);
+                    double distance = new Coordinate().distance(
+                            lat1,
+                            lng1,
+                            location.getLatitude(),
+                            location.getLongitude(),
+                            Coordinate.Unit.Meter);
+
+                    if (distance >= (LOCATION_DISTANCE_PARAMETER))
+                    {
+                        //sync new data
+                        SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.PREVIOUS_LATITUDE,(float)location.getLatitude());
+                        SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.PREVIOUS_LONGITUDE,(float)location.getLongitude());
+                        mSortCouponsByDistanceCallback.refreshData(false);
+                    }
+
+              //  }
+            }
+ */
             if(!isSyncStarted && mSyncAllDataCallback != null){
                 isSyncStarted = true;
                 mSyncAllDataCallback.onSuccess(true);
