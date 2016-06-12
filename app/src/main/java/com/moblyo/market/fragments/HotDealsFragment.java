@@ -112,10 +112,7 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
             @Override
             public void run() {
                 try {
-                    Toast.makeText(mActivity,"Sort timer sort data ",Toast.LENGTH_SHORT).show();
-                    if(!dataSyncingInProgress) {
-                        setDataAgainOnResume();
-                    }
+                    setDataAgainOnResume();
                     if (handler != null)
                         handler.postDelayed(this, TIME_INTERVAL_FOR_SORT);
                 }catch(Exception e){
@@ -158,7 +155,6 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
                     if (handlerForSync != null)
                         handlerForSync.postDelayed(this, TIME_INTERVAL_FOR_SYNC);
                 }catch(Exception e){
-                    dataSyncingInProgress = false;
                 }
             }
         };
