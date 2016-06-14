@@ -23,9 +23,11 @@
         android:layout_margin="3dip"
         android:elevation="10dip"
         >
-    <RelativeLayout  android:layout_width="match_parent"
+
+    <RelativeLayout
+        android:id="@+id/hot_deals_coupon_mainlayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:padding="3dip"
         >
 
@@ -44,27 +46,47 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:padding="5dip"
-        android:orientation="horizontal"
+        android:orientation="vertical"
+        android:gravity="center"
         >
 
         <TextView
-            android:id="@+id/hot_deals_offer_distance"
+            android:id="@+id/sponsored_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="7 Km"
+            android:text="@string/sponsored"
             android:singleLine="true"
             android:textSize="@dimen/medium_text"
-            android:layout_gravity="center"
-            android:textColor="@color/subTitleColor"
+            android:textColor="@color/black"
+            android:visibility="gone"
             />
 
-        <ImageView
-            android:id="@+id/hot_deals_arrow"
+        <LinearLayout
+            android:id="@+id/distance_arrow_ll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-          android:src="@drawable/arrow"
-            android:padding="5dip"
-            />
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/hot_deals_offer_distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="7 Km"
+                android:textSize="@dimen/medium_text"
+                android:layout_gravity="center"
+                android:textColor="@color/subTitleColor"
+                />
+
+            <ImageView
+                android:id="@+id/hot_deals_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow"
+                android:padding="3dip"
+                />
+            </LinearLayout>
+
+
     </LinearLayout>
 
     <LinearLayout

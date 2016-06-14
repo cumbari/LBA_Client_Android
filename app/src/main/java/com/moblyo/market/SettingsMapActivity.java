@@ -70,6 +70,7 @@ public class SettingsMapActivity extends BaseActivity
 	private RelativeLayout searchLayout;
 	private ProgressDialog progressDialog;
 	private boolean isPositionChanged = false;
+	private ListView listView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +129,8 @@ public class SettingsMapActivity extends BaseActivity
 				searchmap.setSelected(true);
 				tapmap.setSelected(false);
 				searchLayout.setVisibility(View.VISIBLE);
+				listView.setVisibility(View.VISIBLE);
+				listView.setAdapter(null);
 				current_location_mark.setDraggable(false);
 			}
 		});
@@ -138,6 +141,7 @@ public class SettingsMapActivity extends BaseActivity
 				searchmap.setSelected(false);
 				tapmap.setSelected(true);
 				searchLayout.setVisibility(View.GONE);
+				listView.setVisibility(View.GONE);
 				current_location_mark.setDraggable(true);
 
 			}
@@ -160,7 +164,7 @@ public class SettingsMapActivity extends BaseActivity
 
 
 	private void setUpSearchView() {
-		ListView listView = (ListView)findViewById(R.id.sugglistView);
+		listView = (ListView)findViewById(R.id.sugglistView);
 		listView.setClickable(false);
 
 		searchLayout = (RelativeLayout) findViewById(R.id.searchLayout);
@@ -291,10 +295,10 @@ public class SettingsMapActivity extends BaseActivity
 				}
 
 				ArrayAdapter arrayAdapter;
-				final ListView listView = (ListView)findViewById(R.id.sugglistView);
+				listView.setVisibility(View.VISIBLE);
 				listView.setClickable(true);
 				arrayAdapter = new ArrayAdapter(SettingsMapActivity.this, R.layout.setlanguage, R.id.tvName, resultList);
-				listView.setVisibility(View.VISIBLE);
+
 
 				listView.setAdapter(arrayAdapter);
 				listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

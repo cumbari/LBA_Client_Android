@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,12 +15,10 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.moblyo.market.DetailedCouponActivity;
 import com.moblyo.market.HomeScreenActivity;
-import com.moblyo.market.LanguageActivity;
 import com.moblyo.market.MapsActivity;
 import com.moblyo.market.R;
 import com.moblyo.market.adapter.MyHotDealsRecyclerViewAdapter;
@@ -142,11 +139,9 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
                             currentLng,
                             Coordinate.Unit.Meter);
 
-                    Toast.makeText(mActivity,"On timer Repeat distance "+distance,Toast.LENGTH_LONG).show();
 
                     if (distance >= (LOCATION_DISTANCE_PARAMETER))
                     {
-                        Toast.makeText(mActivity,"Sync timer sync data ",Toast.LENGTH_SHORT).show();
                         SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.PREVIOUS_LATITUDE,(float)currentLat);
                         SharedPreferenceUtil.getInstance(mActivity).saveData(SharedPrefKeys.PREVIOUS_LONGITUDE,(float)currentLng);
                         sortData(false);
@@ -450,21 +445,21 @@ public class HotDealsFragment extends ParentFragment implements SearchView.OnQue
                 hotDealsArray.clear();
                 if (sponsoredArray.size() > 0) {
                     Collections.sort(sponsoredArray, new SortDataTableByDistanceFormatter());
-                    ++valueToDeductFromTotalListItems;
+                    /*++valueToDeductFromTotalListItems;
                     ListOfCoupons listOfCoupons = new ListOfCoupons();
                     listOfCoupons.setOfferTitle(getResources().getString(R.string.sponsored));
                     listOfCoupons.setCategoryId("-1000");
-                    hotDealsArray.add(listOfCoupons);
+                    hotDealsArray.add(listOfCoupons);*/
                     hotDealsArray.addAll(sponsoredArray);
                 }
 
                 if (unsponsoredArray.size() > 0) {
                     Collections.sort(unsponsoredArray, new SortDataTableByDistanceFormatter());
-                    ++valueToDeductFromTotalListItems;
+                   /* ++valueToDeductFromTotalListItems;
                     ListOfCoupons listOfCoupons = new ListOfCoupons();
                     listOfCoupons.setOfferTitle(getResources().getString(R.string.unSponsored));
                     listOfCoupons.setCategoryId("-2000");
-                    hotDealsArray.add(listOfCoupons);
+                    hotDealsArray.add(listOfCoupons);*/
                     hotDealsArray.addAll(unsponsoredArray);
                 }
 

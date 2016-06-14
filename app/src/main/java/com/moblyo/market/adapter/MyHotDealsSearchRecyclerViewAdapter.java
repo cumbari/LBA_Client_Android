@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.koushikdutta.ion.Ion;
@@ -38,25 +39,29 @@ public class MyHotDealsSearchRecyclerViewAdapter extends RecyclerView.Adapter<My
         this.context = context;
         this.activity = activity;
         this.listOfCoupons = data;
-        typeClass=new TypeFaceClass(context);
+        typeClass = new TypeFaceClass(context);
         listOfStores = new ArrayList<>();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
+        RelativeLayout hot_deals_coupon_mainlayout;
         ImageView hot_deals_coupon_image;
         TextView hot_deals_offer_title;
         TextView hot_deals_offer_slogan;
         TextView hot_deals_offer_distance;
         ImageView hot_deals_arrow;
+        TextView sponsored_label;
 
         ViewHolder(View itemView) {
             super(itemView);
+            hot_deals_coupon_mainlayout = (RelativeLayout) itemView.findViewById(R.id.hot_deals_coupon_mainlayout);
             hot_deals_coupon_image = (ImageView)itemView.findViewById(R.id.hot_deals_coupon_image);
 
             hot_deals_offer_title = (TextView)itemView.findViewById(R.id.hot_deals_offer_title);
             hot_deals_offer_slogan = (TextView)itemView.findViewById(R.id.hot_deals_offer_slogan);
             hot_deals_offer_distance = (TextView)itemView.findViewById(R.id.hot_deals_offer_distance);
+            sponsored_label = (TextView)itemView.findViewById(R.id.sponsored_label);
             hot_deals_arrow = (ImageView)itemView.findViewById(R.id.hot_deals_arrow);
         }
     }
@@ -73,6 +78,7 @@ public class MyHotDealsSearchRecyclerViewAdapter extends RecyclerView.Adapter<My
         typeClass.setTypefaceBold(holder.hot_deals_offer_title);
         typeClass.setTypefaceNormal(holder.hot_deals_offer_slogan);
         typeClass.setTypefaceNormal(holder.hot_deals_offer_distance);
+        typeClass.setTypefaceNormal(holder.sponsored_label);
 
         return holder;
     }
@@ -92,6 +98,20 @@ public class MyHotDealsSearchRecyclerViewAdapter extends RecyclerView.Adapter<My
             holder.hot_deals_coupon_image.setVisibility(View.VISIBLE);
             holder.hot_deals_arrow.setVisibility(View.VISIBLE);
             holder.hot_deals_offer_slogan.setText(couponData.getOfferSlogan());
+
+            try {
+                if (!couponData.isSponsored()) {
+                    holder.sponsored_label.setVisibility(View.GONE);
+                    holder.hot_deals_coupon_mainlayout.setBackgroundResource(0);
+                } else {
+                    holder.sponsored_label.setVisibility(View.VISIBLE);
+                    holder.hot_deals_coupon_mainlayout.setBackgroundResource(R.color.sponsored_coupon_color);
+                }
+            }catch (OutOfMemoryError outOfMemoryError){
+
+            }catch (Exception e){
+
+            }
 
             holder.hot_deals_offer_distance.setText(calculateDistanceForCoupon(couponData).replace(",","."));
 

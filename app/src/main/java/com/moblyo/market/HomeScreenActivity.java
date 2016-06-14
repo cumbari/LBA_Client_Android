@@ -56,7 +56,6 @@ public class HomeScreenActivity extends BaseActivity implements OnFragmentAttach
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //isSplash = true;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
@@ -83,17 +82,6 @@ public class HomeScreenActivity extends BaseActivity implements OnFragmentAttach
         }catch (Exception e){
 
         }
-
-/*        getLocationFromGoogleClient = new GetLocationFromGoogleClient(HomeScreenActivity.this, null, new SortCouponsByDistanceCallback() {
-            @Override
-            public void refreshData(boolean refresh) {
-                if(mOnPassValueToFragmentListener != null) {
-                    mOnFragmentAttachedListener.isDataSort(refresh);
-                }
-            }
-        });
-        getLocationFromGoogleClient.checkLocationSettings();
-*/
     }
 
     @Override
