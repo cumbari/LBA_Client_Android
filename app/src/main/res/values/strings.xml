@@ -152,8 +152,8 @@
     <string name="logged_out_text">Log out!</string>
     <string name="not_connected_to_facebook">You have logged out!</string>
 
-    <string name="facebook_app_id">457826594364279</string>
-    <string name="google_maps_key_komal"> AIzaSyBpKwQRdik7RZj1DycTmJAQIsYx3TMJ9Bs</string>
+    <string name="facebook_app_id" translatable="false">457826594364279</string>
+    <string name="google_maps_key_komal" translatable="false"> AIzaSyBpKwQRdik7RZj1DycTmJAQIsYx3TMJ9Bs</string>
 
 
     <string name="coupon_expired_message">Coupon is Expired!</string>
@@ -162,6 +162,10 @@
     <string name="hours">Hours</string>
     <string name="minutes">Minutes</string>
     <string name="seconds">Seconds</string>
+
+    <string name="drag_to_move">Drag to move</string>
+    <string name="enter_address">Enter address</string>
+
 
 
 </resources>

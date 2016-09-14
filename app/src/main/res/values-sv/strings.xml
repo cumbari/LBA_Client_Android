@@ -160,5 +160,9 @@
     <string name="minutes">Protokoll</string>
     <string name="seconds">sekunder</string>
 
+    <string name="drag_to_move">Dra för att flytta</string>
+    <string name="enter_address">Skriv in addressen</string>
+
+
 
 </resources>
